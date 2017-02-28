@@ -1,4 +1,23 @@
 <?php
+
+function bootstrapstarter_enqueue_styles() {
+    wp_enqueue_style( 'obsidian-bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css' );
+    wp_enqueue_style( 'obsidian-style', get_template_directory_uri() . '/style.css' );
+}
+
+function bootstrapstarter_enqueue_scripts() {
+    wp_enqueue_script('obsidian-bootstrap-js', get_template_directory_uri().'/bootstrap/js/bootstrap.min.js', '3.3.6', false );
+}
+
+add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_scripts' );
+
+
+//remove_filter( 'the_content', 'wpautop');
+
+// Register Custom Navigation Walker
+require_once('wp_bootstrap_navwalker.php');
+
 /**
  * Register a new menu.
  *

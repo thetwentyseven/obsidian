@@ -3,11 +3,20 @@
     // Custom loop
     if ( have_posts() ) : while ( have_posts() ) : the_post();
         ?>
-        <h1><?php the_title(); ?></h1>
+        <div class="container">
+          <div class="page-header">
+            <h1><?php the_title(); ?></h1>
+          </div>
+         <!-- Example row of columns -->
+          <div class="row">
+           <div class="col-md-12">
+             <h2><?php  the_title(); ?></h2>
+             <h3><?php the_author(); ?></h3>
+             <?php the_content(); ?>
+           </div>
+         </div>
+        </div>
         <?php
-        the_title('<h1>','</h1>');
-        the_content();
-        the_author();
     endwhile;
     else :
         _e( 'Sorry, no posts matched your criteria.', 'obsidian' );

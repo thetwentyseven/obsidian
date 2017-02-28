@@ -11,3 +11,16 @@ Text Domain: obsidian
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+
+@font-face {
+    font-family: proximaNova;
+    src: url(fonts/ProximaNovaRegular.otf);
+}
+
+html, body {
+    font-family: proximaNova;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: white;
+    background-color: black;
+}

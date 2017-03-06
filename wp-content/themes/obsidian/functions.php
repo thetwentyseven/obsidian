@@ -74,3 +74,22 @@ function obsidian_theme_customizer( $wp_customize ) {
 
 }
 add_action( 'customize_register', 'obsidian_theme_customizer' );
+
+
+/**
+ * Register a widge areas.
+ *
+ */
+function obsidian_footer_widgets_init() {
+
+	register_sidebar( array(
+		'name'          => 'Footer right sidebar',
+		'id'            => 'footer_right_1',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="rounded">',
+		'after_title'   => '</h2>',
+	) );
+
+}
+add_action( 'widgets_init', 'obsidian_footer_widgets_init' );

@@ -20,7 +20,7 @@
     <div class="container">
 			<div class="nav-pills navbar-left nav-info">
 				<ul>
-					<li>Contact: 0131 999 129 9912</li>
+					<li>Contact: 0845 260 6040</li>
 					<li>Opening Hours: Thursday-Saturday: 8:00PM - 3:00AM</li>
 				</ul>
 			</div>
@@ -53,7 +53,7 @@
 			    </hgroup>
 			<?php endif; ?>
 
-	     
+
 	    </div>
         <?php
             wp_nav_menu( array(

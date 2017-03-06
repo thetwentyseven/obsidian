@@ -55,3 +55,22 @@ function custom_events_post_type(){
 											)
 										);
 }
+
+function obsidian_theme_customizer( $wp_customize ) {
+    // Fun code will go here
+    $wp_customize->add_section( 'obsidian_logo_section' , array(
+    'title'       => __( 'Logo', 'obsidian' ),
+    'priority'    => 30,
+    'description' => 'Upload a logo to replace the default site name and description in the header',
+    ) );
+
+    $wp_customize->add_setting( 'obsidian_logo' );
+
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'obsidian_logo', array(
+        'label'    => __( 'Logo', 'obsidian' ),
+        'section'  => 'obsidian_logo_section',
+        'settings' => 'obsidian_logo',
+    ) ) );
+
+}
+add_action( 'customize_register', 'obsidian_theme_customizer' );

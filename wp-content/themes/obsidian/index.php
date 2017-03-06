@@ -3,7 +3,7 @@
     // Custom loop
     if ( have_posts() ) : while ( have_posts() ) : the_post();
         ?>
-        <div class="container">
+        <div class="container main-content">
           <div class="page-header">
             <h1><?php the_title(); ?></h1>
           </div>

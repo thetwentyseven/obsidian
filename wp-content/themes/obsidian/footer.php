@@ -44,7 +44,7 @@
       </div>
       <div class="col-md-3">
         <h3>NEWSLETTERS</h3>
-        <?php dynamic_sidebar( 'home_right_1' ); ?>
+        <?php dynamic_sidebar( 'footer_right_1' ); ?>
       </div>
     </div>
   </div>
@@ -56,7 +56,7 @@
       <p class="text-muted">Copyright &#169; 2017 Obsidian. All Right Reserved.</p>
     </div>
     <div class="nav-pills navbar-right nav-social">
-      <ul>
+      <ul class="inline">
         <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
         <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
         <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>

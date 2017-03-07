@@ -37,7 +37,7 @@ body{
 a {color: #e30613;}
 a:hover {color: #cc6c72;}
 
-ol, ul {
+.inline {
     margin-top: 0;
     margin-bottom: 10px;
     display: inline-flex;
@@ -114,8 +114,6 @@ ol, ul {
     border-color: #e7e7e7;
     padding: 0;
 }
-
-
 
 .dropdown-menu {
     position: absolute;

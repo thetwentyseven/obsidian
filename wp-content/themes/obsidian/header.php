@@ -19,13 +19,13 @@
 	<nav class="navbar navbar-inverse navbar-fixed">
     <div class="container">
 			<div class="nav-pills navbar-left nav-info">
-				<ul>
+				<ul class="inline">
 					<li>Contact: 0845 260 6040</li>
 					<li>Opening Hours: Thursday-Saturday: 8:00PM - 3:00AM</li>
 				</ul>
 			</div>
 			<div class="nav-pills navbar-right nav-social">
-				<ul>
+				<ul class="inline">
 					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>

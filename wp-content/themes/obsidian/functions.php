@@ -2,11 +2,14 @@
 
 function bootstrapstarter_enqueue_styles() {
     wp_enqueue_style( 'obsidian-bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css' );
+    wp_enqueue_style( 'obsidian-animate', get_template_directory_uri() . '/animate/animate.css' );
     wp_enqueue_style( 'obsidian-style', get_template_directory_uri() . '/style.css' );
+
 }
 
 function bootstrapstarter_enqueue_scripts() {
     wp_enqueue_script('obsidian-bootstrap-js', get_template_directory_uri().'/bootstrap/js/bootstrap.min.js', '3.3.6', false );
+    wp_enqueue_script('obsidian-animate-js', get_template_directory_uri().'/animate/animate.js', '1.0.0', false );
 }
 
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles' );

@@ -14,7 +14,7 @@
            <div class="col-md-12">
              <h2><?php  the_title(); ?></h2>
              <h3><?php the_author(); ?></h3>
-             <?php the_excerpt(); ?>
+             <?php the_content(); ?>
            </div>
          </div>
         </div>

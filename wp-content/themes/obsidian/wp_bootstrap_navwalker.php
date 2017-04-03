@@ -21,7 +21,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
-		$output .= "\n$indent<ul role=\"menu\" class=\" dropdown-menu\" data-dropdown-in=\"fadeIn\" data-dropdown-out=\"fadeOut\">\n";
+		$output .= "\n$indent<ul role=\"menu\" class=\" dropdown-menu\" data-dropdown-in=\"bounceIn\" data-dropdown-out=\"fadeOut\">\n";
 	}
 
 	/**

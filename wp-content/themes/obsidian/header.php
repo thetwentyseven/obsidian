@@ -4,13 +4,15 @@
  *
  * Displays all of the head element and everything up until the "site-content" div.
  */
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 	<script src="https://use.fontawesome.com/cf23e52540.js"></script>
 	<?php wp_head(); ?>
 </head>
@@ -57,9 +59,9 @@
 	    </div>
         <?php
             wp_nav_menu( array(
-                'menu'              => 'primary',
-                'theme_location'    => 'primary',
-                'depth'             => 2,
+                'menu'              => 'main-menu',
+                'theme_location'    => 'Main Menu',
+                'depth'             => 3,
                 'container'         => 'div',
                 'container_class'   => 'collapse navbar-collapse',
         				'container_id'      => 'bs-example-navbar-collapse-1',

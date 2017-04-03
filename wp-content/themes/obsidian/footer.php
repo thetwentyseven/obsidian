@@ -10,15 +10,15 @@
           <tr>
             <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
             <td>
-              <p>10 Colinton Rd, EH10 5DT</p>
+              <p>10 George Street, New Town, EH10 5DT</p>
               <p>Edinburgh, Scotland</p>
             </td>
           </tr>
           <tr>
             <td><i class="fa fa-phone" aria-hidden="true"></i></td>
             <td>
-              <p>+0845 260 6040</p>
-              <p>+0845 260 6040</p>
+              <p>+0131 678 564</p>
+              <p>+0131 678 567</p>
             </td>
           </tr>
           <tr>

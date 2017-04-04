@@ -67,6 +67,23 @@ a:hover {color: #cc6c72;}
 /**
 * Navigation
 */
+ul#menu-main-menu {
+    margin: 0 auto;
+    padding: 2em;
+}
+
+button.navbar-toggle.collapsed {
+    margin: 7%;
+}
+
+button.navbar-toggle {
+    margin: 5%;
+}
+
+.site-logo {
+    float: left;
+}
+
 .navbar-default {
     background-color: rgba(0, 0, 0, 0.70);
     border-color: rgba(0, 0, 0, 0.70);

@@ -13,9 +13,11 @@ global $newsletter, $post;
 if (!defined('ABSPATH'))
     exit;
 
-$color = $theme_options['theme_color'];
-if (empty($color))
+
+if (empty($theme_options['theme_color']))
     $color = '#0088cc';
+else
+    $color = $theme_options['theme_color'];
 
 if (isset($theme_options['theme_posts'])) {
     $filters = array();
@@ -66,7 +68,7 @@ if (isset($theme_options['theme_posts'])) {
                             <tbody>
                                 <tr>
                                     <td valign="top" style="background-color: #333; color: #f4f4f4; font-size: 20px; padding: 7px">
-                                        <?php echo get_option('blogname') ?>
+<?php echo get_option('blogname') ?>
                                     </td>
                                 </tr>
                                 <!-- main content here --> 
@@ -124,7 +126,7 @@ if (isset($theme_options['theme_posts'])) {
                                                             <tbody>
                                                                 <tr>
                                                                     <td align="center" style="font-size: 14px; font-family: Arial;">
-                                                                        <?php include WP_PLUGIN_DIR . '/newsletter/emails/themes/default/social.php'; ?>
+<?php include WP_PLUGIN_DIR . '/newsletter/emails/themes/default/social.php'; ?>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>

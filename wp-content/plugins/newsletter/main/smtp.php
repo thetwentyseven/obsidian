@@ -88,6 +88,10 @@ if (!$controls->is_action()) {
         $controls->messages .= '</textarea>';
     }
 }
+
+if (empty($controls->data['enabled']) && !empty($controls->data['host'])) {
+    $controls->warnings[] = 'SMTP configured by NOT enabled.';
+}
 ?>
 
 <div class="wrap" id="tnp-wrap">
@@ -99,11 +103,11 @@ if (!$controls->is_action()) {
         <h2><?php _e('SMTP Settings', 'newsletter') ?></h2>
     
     <p>
-        <i class="fa fa-info-circle"></i> <a href="http://www.thenewsletterplugin.com/extensions" target="_blank">Discover how SMTP services can boost your newsletters!</a>
+        <i class="fa fa-info-circle"></i> <a href="https://www.thenewsletterplugin.com/extensions" target="_blank">Discover how SMTP services can boost your newsletters!</a>
         <!--
     <p>SMTP (Simple Mail Transfer Protocol) refers to external delivery services you can use to send emails.</p>
     <p>SMTP services are usually more reliable, secure and spam-aware than the standard delivery method available to your blog.</p>
-    <p>Even better, using the <a href="http://www.thenewsletterplugin.com/extensions">integration extensions</a>, you can benefit of more efficient service connections, bounce detection and other nice features.</p>
+    <p>Even better, using the <a href="https://www.thenewsletterplugin.com/extensions">integration extensions</a>, you can benefit of more efficient service connections, bounce detection and other nice features.</p>
         -->
     </p>
     
@@ -114,12 +118,12 @@ if (!$controls->is_action()) {
         <p>
 
             What you need to know to use an external SMTP can be found
-            <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#smtp" target="_blank">here</a>.
+            <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#smtp" target="_blank">here</a>.
             <br>
-            On GoDaddy you should follow this <a href="http://www.thenewsletterplugin.com/godaddy-using-smtp-external-server-shared-hosting" target="_blank">special setup</a>.
+            On GoDaddy you should follow this <a href="https://www.thenewsletterplugin.com/godaddy-using-smtp-external-server-shared-hosting" target="_blank">special setup</a>.
         </p>
         <p>
-            Consider <a href="http://www.thenewsletterplugin.com/affiliate/sendgrid" target="_blank">SendGrid</a> for a serious and reliable SMTP service.
+            Consider <a href="https://www.thenewsletterplugin.com/affiliate/sendgrid" target="_blank">SendGrid</a> for a serious and reliable SMTP service.
         </p>
     
     </div>
@@ -159,7 +163,7 @@ if (!$controls->is_action()) {
             <tr>
                 <th>Insecure SSL Connections</th>
                 <td>
-                    <?php $controls->yesno('ssl_insecure'); ?> <a href="http://www.thenewsletterplugin.com/?p=21989" target="_blank">Read more</a>.
+                    <?php $controls->yesno('ssl_insecure'); ?> <a href="https://www.thenewsletterplugin.com/?p=21989" target="_blank">Read more</a>.
                 </td>
             </tr>
             <tr>

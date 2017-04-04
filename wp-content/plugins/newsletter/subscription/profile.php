@@ -28,7 +28,7 @@ $rules = array(0 => 'Optional', 1 => 'Required');
 
 <div class="wrap" id="tnp-wrap">
 
-    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module'; ?>
+    <?php $help_url = 'https://www.thenewsletterplugin.com/plugins/newsletter/subscription-module'; ?>
 
     <?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
@@ -38,7 +38,7 @@ $rules = array(0 => 'Optional', 1 => 'Required');
         <p>
             This panel contains the configuration of the subscription and profile editing forms which collect the subscriber data you want to have.<br>
             And let you to <strong>translate</strong> every single button and label.<br>
-            <strong>Preferences</strong> can be an important setting for your newsletter: <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">here you can read more about them</a>.
+            <strong>Preferences</strong> can be an important setting for your newsletter: <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">here you can read more about them</a>.
         </p>
 
     </div>

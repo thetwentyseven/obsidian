@@ -104,7 +104,8 @@ $emails = Newsletter::instance()->get_emails('message');
 
                 <tbody>
                     <?php foreach ($emails as $email) {
-                        $email_options = unserialize($email->options);
+                        $email_options = maybe_unserialize($email->options);
+                        $composer = isset($email_options['composer']);
                         ?>
                         <tr>
                             <td><input type="checkbox" name="ids[]" value="<?php echo $email->id; ?>"/></td>
@@ -133,7 +134,7 @@ $emails = Newsletter::instance()->get_emails('message');
                             <td><?php if ($email->status == 'sent' || $email->status == 'sending') echo $email->sent . ' ' . __('of', 'newsletter') . ' ' . $email->total; ?></td>
                             <td><?php if ($email->status == 'sent' || $email->status == 'sending') echo $module->format_date($email->send_on); ?></td>
                             <td><?php echo $email->track == 1 ? __('Yes', 'newsletter') : __('Yes', 'newsletter'); ?></td>
-                            <td><a class="button-primary" href="<?php echo $module->get_admin_page_url(is_array($email_options) && array_key_exists('composer', $email_options) && $email_options['composer'] ? 'composer' : 'edit'); ?>&amp;id=<?php echo $email->id; ?>"><i class="fa fa-pencil"></i> <?php _e('Edit', 'newsletter') ?></a></td>
+                            <td><a class="button-primary" href="<?php echo $module->get_admin_page_url($composer ? 'composer' : 'edit'); ?>&amp;id=<?php echo $email->id; ?>"><i class="fa fa-<?php echo $composer?'th-large':'pencil'?>"></i> <?php _e('Edit', 'newsletter') ?></a></td>
                             <td>
                                 <a class="button-primary" href="<?php echo NewsletterStatistics::instance()->get_statistics_url($email->id); ?>"><i class="fa fa-bar-chart"></i> <?php _e('Statistics', 'newsletter') ?></a>
                             </td>

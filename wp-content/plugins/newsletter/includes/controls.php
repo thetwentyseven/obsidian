@@ -1,5 +1,6 @@
 <?php
-if (!defined('ABSPATH')) exit;
+
+defined('ABSPATH') || exit;
 
 class NewsletterControls {
 
@@ -8,6 +9,7 @@ class NewsletterControls {
     var $button_data = '';
     var $errors = '';
     var $messages = '';
+    var $warnings = array();
 
     function __construct($options = null) {
         if ($options == null) {
@@ -105,6 +107,13 @@ class NewsletterControls {
             echo $this->errors;
             echo '</div>';
         }
+        if (!empty($this->warnings)) {
+            foreach ($this->warnings as $warning) {
+                echo '<div class="tnp-warning">';
+                echo $warning;
+                echo '</div>';
+            }
+        }
         if (!empty($this->messages)) {
             echo '<div class="tnp-message">';
             echo $this->messages;
@@ -118,7 +127,7 @@ class NewsletterControls {
         }
         $this->messages .= __('Saved.', 'newsletter');
     }
-    
+
     function add_message_done() {
         if (!empty($this->messages)) {
             $this->messages .= '<br><br>';
@@ -229,8 +238,39 @@ class NewsletterControls {
 
         $this->checkboxes_group($name, $list);
     }
-    
-    function page($name='page', $first = null) {
+
+    function posts_select($name, $max = 20, $args = array()) {
+        $args = array_merge(array(
+            'posts_per_page' => 5,
+            'offset' => 0,
+            'category' => '',
+            'category_name' => '',
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'include' => '',
+            'exclude' => '',
+            'meta_key' => '',
+            'meta_value' => '',
+            'post_type' => 'post',
+            'post_mime_type' => '',
+            'post_parent' => '',
+            'author' => '',
+            'author_name' => '',
+            'post_status' => 'publish',
+            'suppress_filters' => true
+                ), $args);
+        $args['posts_per_page'] = $max;
+
+        $posts = get_posts($args);
+        $options = array();
+        foreach ($posts as $post) {
+            $options['' . $post->ID] = $post->post_title;
+        }
+
+        $this->select($name, $options);
+    }
+
+    function page($name = 'page', $first = null) {
         $pages = get_pages();
         $options = array();
         foreach ($pages as $page) {
@@ -346,7 +386,7 @@ class NewsletterControls {
 
     function text($name, $size = 20, $placeholder = '') {
         $value = $this->get_value($name);
-        echo '<input id="options-', esc_attr($name) , '" placeholder="' . esc_attr($placeholder) . '" name="options[' . $name . ']" type="text" size="' . $size . '" value="';
+        echo '<input id="options-', esc_attr($name), '" placeholder="' . esc_attr($placeholder) . '" name="options[' . $name . ']" type="text" size="' . $size . '" value="';
         echo esc_attr($value);
         echo '">';
     }
@@ -415,7 +455,7 @@ class NewsletterControls {
         echo esc_attr(esc_js(__('Proceed?', 'newsletter')));
         echo '\')) return false;">';
         echo '<i class="fa fa-copy"></i> ';
-        echo esc_html(__('Copy', 'newsletter'));
+        echo esc_html(__('Duplicate', 'newsletter'));
         echo '</button>';
     }
 
@@ -438,7 +478,7 @@ class NewsletterControls {
         } else {
             echo '<input class="button-primary" type="button" value="' . esc_attr($label) . '" onclick="this.form.act.value=\'' . esc_attr($action) . '\';this.form.submit()"/>';
         }
-    } 
+    }
 
     function button_confirm($action, $label, $message = '', $data = '') {
         if (empty($message)) {
@@ -458,9 +498,7 @@ class NewsletterControls {
     function wp_editor($name, $settings = array()) {
         $value = $this->get_value($name);
         wp_editor($value, $name, array_merge(array('textarea_name' => 'options[' . esc_attr($name) . ']', 'wpautop' => false), $settings));
-        if (!is_plugin_active('mce_table_buttons/mce_table_buttons.php')) {
-            echo '<p class="description">You can install <a href="https://wordpress.org/plugins/mce-table-buttons/" target="_blank">MCE Table Button</a> for a table management toolbar add on.</p>';
-        }
+            echo '<p class="description">You can install <a href="https://wordpress.org/plugins/tinymce-advanced/" target="_blank">TinyMCE Advanced</a> for advanced editing features</p>';
     }
 
     function textarea($name, $width = '100%', $height = '50') {
@@ -481,8 +519,8 @@ class NewsletterControls {
         $value = $this->get_value($name);
         //do_action('newsletter_controls_textarea_preview', $name);
         if ($switch_button) {
-        echo '<input class="button-primary" type="button" onclick="newsletter_textarea_preview(\'options-' . esc_attr($name) . '\', \'\', \'\')" value="Switch editor/preview">';
-        echo '<br><br>';
+            echo '<input class="button-primary" type="button" onclick="newsletter_textarea_preview(\'options-' . esc_attr($name) . '\', \'\', \'\')" value="Switch editor/preview">';
+            echo '<br><br>';
         }
         echo '<div style="box-sizing: border-box; position: relative; margin: 0; padding: 0; width:' . esc_attr($width) . '; height:' . esc_attr($height) . '">';
         echo '<textarea id="options-' . esc_attr($name) . '" name="options[' . esc_attr($name) . ']" wrap="off" style="width:' . esc_attr($width) . ';height:' . esc_attr($height) . 'px">';
@@ -494,7 +532,6 @@ class NewsletterControls {
         echo '</div>';
         echo '</div>';
     }
-      
 
     function email($prefix, $editor = null, $disable_option = false) {
         if ($disable_option) {
@@ -634,7 +671,7 @@ class NewsletterControls {
         echo '</div>';
         echo '<div class="hints">';
         echo 'User\'s preferences can be activated from the "Subscription Form" panel. They can be used to simulate lists or create private groups. The number is the "preference number". ';
-        echo '<a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about preferences</a>.';
+        echo '<a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about preferences</a>.';
         echo '</div>';
     }
 
@@ -656,7 +693,7 @@ class NewsletterControls {
             echo '</div>';
         }
         echo '<div style="clear: both"></div>';
-        echo '<a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">'
+        echo '<a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">'
         . 'Click here to read more about preferences.'
         . '</a> They can be configured on Subscription Form - Profile fields panel.';
         echo '</div>';
@@ -682,21 +719,25 @@ class NewsletterControls {
             echo '</div>';
         }
         echo '<div style="clear: both"></div>';
-        echo '<a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Click here know more about preferences.</a> They can be configured on Subscription/Form field panel.';
+        echo '<a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Click here know more about preferences.</a> They can be configured on Subscription/Form field panel.';
         echo '</div>';
     }
 
-    /** 
+    /**
      * Creates a single select with the active preferences. 
      */
-    function preferences_select($name = 'preference') {
+    function preferences_select($name = 'preference', $empty_label = null) {
         $options_profile = get_option('newsletter_profile');
 
         $lists = array();
+        if ($empty_label) {
+            $lists[''] = $empty_label;
+        }
         for ($i = 1; $i <= NEWSLETTER_LIST_MAX; $i++) {
             $lists['' . $i] = '(' . $i . ') ' . $options_profile['list_' . $i];
         }
         $this->select($name, $lists);
+        echo ' <a href="admin.php?page=newsletter_subscription_lists" target="_blank"><i class="fa fa-edit"></i></a></p>';
     }
 
     function date($name) {
@@ -947,15 +988,21 @@ class NewsletterControls {
     }
 
     function media($name) {
-        $media_id = $this->data[$name]['id'];
-        $media = wp_get_attachment_image_src($media_id, 'medium');
-        $media_full = wp_get_attachment_image_src($media_id, 'full');
+        if (isset($this->data[$name])) {
+            $media_id = (int)$this->data[$name]['id'];
+            $media = wp_get_attachment_image_src($media_id, 'medium');
+            $media_full = wp_get_attachment_image_src($media_id, 'full');
+        } else {
+            $media = false;
+        }
 
         if ($media === false) {
             $media = array('', '', '');
+            $media_full = array('', '', '');
+            $media_id = 0;
             echo '<img style="width: 200px" id="' . esc_attr($name) . '_img" src="' . plugins_url('newsletter') . '/images/nomedia.png" onclick="newsletter_media(\'' . esc_attr($name) . '\')">';
         } else {
-            echo '<img style="width: 200px" id="' . esc_attr($name) . '_img" src="' . $media[0] . '" onclick="newsletter_media(\'' . esc_attr($name) . '\')">';
+            echo '<img style="width: 200px" id="' . esc_attr($name) . '_img" src="' . esc_attr($media[0]) . '" onclick="newsletter_media(\'' . esc_attr($name) . '\')">';
             echo '<br>';
             echo '<a href="#" onclick="newsletter_media_remove(\'' . esc_attr($name) . '\'); return false">Remove</a>';
         }
@@ -997,5 +1044,3 @@ class NewsletterControls {
     }
 
 }
-
-?>

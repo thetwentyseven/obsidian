@@ -66,7 +66,7 @@ $labels = array_reverse($labels);
 
 <div class="wrap" id="tnp-wrap">
 
-    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter'; ?>
+    <?php $help_url = 'https://www.thenewsletterplugin.com/plugins/newsletter'; ?>
     <?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
     <div id="tnp-heading">
@@ -203,7 +203,7 @@ $labels = array_reverse($labels);
                         <!-- START Documentation -->
                         <div id="tnp-dash-documentation" class="postbox">
                             <h3><?php _e('Documentation', 'newsletter') ?>
-                                <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation" target="_blank">
+                                <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation" target="_blank">
                                     <i class="fa fa-life-ring"></i> <?php _e('Read all', 'newsletter') ?>
                                 </a>
                             </h3>
@@ -212,18 +212,18 @@ $labels = array_reverse($labels);
                                     <iframe width="480" height="360" src="https://www.youtube.com/embed/JaxK7XwqvVI?rel=0" frameborder="0" allowfullscreen></iframe>
                                 </div>
                                 <div>
-                                    <a class="orange" href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation/email-sending-issues" target="_blank">
+                                    <a class="orange" href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation/email-sending-issues" target="_blank">
                                         <i class="fa fa-exclamation-triangle"></i> <?php _e('Problem sending messages? Start here!', 'newsletter') ?>
                                     </a>
                                 </div>
 
                                 <div>
-                                    <a class="blue" href="http://www.thenewsletterplugin.com/support/video-tutorials" target="_blank">
+                                    <a class="blue" href="https://www.thenewsletterplugin.com/support/video-tutorials" target="_blank">
                                         <i class="fa fa-youtube-play"></i> <?php _e('All Video Tutorials', 'newsletter') ?>
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="purple" href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">
+                                    <a class="purple" href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">
                                         <i class="fa fa-question-circle"></i> <?php _e('Learn how to segment your suscribers', 'newsletter') ?>
                                     </a>
                                 </div>
@@ -298,19 +298,19 @@ $labels = array_reverse($labels);
                             <!-- START Premium -->
                             <div id="tnp-dash-premium" class="postbox">
                                 <h3><?php _e('Premium', 'newsletter') ?>
-                                    <a href="http://www.thenewsletterplugin.com/extensions" target="_blank">
+                                    <a href="https://www.thenewsletterplugin.com/extensions" target="_blank">
                                         <i class="fa fa-trophy"></i> <?php _e('Buy', 'newsletter') ?>
                                     </a>
                                 </h3>
                                 <div class="inside">
                                     <div>
-                                        <a href="http://www.thenewsletterplugin.com/extensions" target="_blank">
-                                            <img style="width: 100%;"src="http://cdn.thenewsletterplugin.com/dashboard01.gif">
+                                        <a href="https://www.thenewsletterplugin.com/extensions" target="_blank">
+                                            <img style="width: 100%;"src="https://cdn.thenewsletterplugin.com/dashboard01.gif">
                                         </a>
                                     </div>
                                     <div>
-                                        <a href="http://www.thenewsletterplugin.com/extensions" target="_blank">
-                                            <img style="width: 100%;"src="http://cdn.thenewsletterplugin.com/dashboard02.png">
+                                        <a href="https://www.thenewsletterplugin.com/extensions" target="_blank">
+                                            <img style="width: 100%;"src="https://cdn.thenewsletterplugin.com/dashboard02.png">
                                         </a>
                                     </div>
                                 </div>

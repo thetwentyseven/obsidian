@@ -6,6 +6,8 @@ $module = NewsletterEmails::instance();
 
 // Always required
 $email = Newsletter::instance()->get_email((int) $_GET['id'], ARRAY_A);
+$email['options'] = maybe_unserialize($email['options']);
+if (!is_array($email['options'])) $email['options'] = array();
 
 if (empty($email)) {
     echo 'Wrong email identifier';
@@ -23,13 +25,11 @@ if (!$controls->is_action()) {
     if (!empty($email['sex'])) {
         $controls->data['sex'] = explode(',', $email['sex']);
     }
-    $email_options = unserialize($email['options']);
-    if (is_array($email_options)) {
-        $controls->data = array_merge($controls->data, $email_options);
 
-        foreach ($email_options as $name => $value) {
-            $controls->data['options_' . $name] = $value;
-        }
+    $controls->data = array_merge($controls->data, $email['options']);
+
+    foreach ($email['options'] as $name => $value) {
+        $controls->data['options_' . $name] = $value;
     }
 }
 
@@ -55,13 +55,17 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     $email['private'] = $controls->data['private'];
 
     // Builds the extended options
-    $email['options'] = array();
+    //$email['options'] = array();
     $email['options']['preferences_status'] = $controls->data['preferences_status'];
     if (isset($controls->data['preferences'])) {
         $email['options']['preferences'] = $controls->data['preferences'];
+    } else {
+        $email['options']['preferences'] = array();
     }
     if (isset($controls->data['sex'])) {
         $email['options']['sex'] = $controls->data['sex'];
+    } else {
+        $email['options']['sex'] = array();        
     }
 
     foreach ($controls->data as $name => $value) {
@@ -209,7 +213,7 @@ if ($controls->is_action('test')) {
         }
 
         $controls->messages .= '<br>';
-        $controls->messages .= '<a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">' .
+        $controls->messages .= '<a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">' .
                 __('Read more about test subscribers', 'newsletter') . '</a>.';
 
         $controls->messages .= '<br>If diagnostic emails are delivered but test emails are not, try to change the encoding to "base 64" on main configuration panel';
@@ -232,26 +236,7 @@ if ($email['editor'] == 0) {
 
 
 <?php if ($email['editor'] == 1) { ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/codemirror.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/show-hint.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/codemirror.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/mode/xml/xml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/mode/css/css.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/mode/javascript/javascript.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/show-hint.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/xml-hint.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/html-hint.js"></script>
-    <script>
-        var templateEditor;
-        jQuery(function () {
-            templateEditor = CodeMirror.fromTextArea(document.getElementById("options-message"), {
-                lineNumbers: true,
-                mode: 'htmlmixed',
-                extraKeys: {"Ctrl-Space": "autocomplete"}
-            });
-        });
-    </script>
+
 <?php } else { ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.3/tinymce.min.js"></script>
@@ -266,12 +251,12 @@ if ($email['editor'] == 0) {
             statusbar: true,
             table_toolbar: "tableprops tablecellprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | " +
                     "tableinsertcolbefore tableinsertcolafter tabledeletecol",
-            toolbar: "bold italic underline strikethrough forecolor backcolor | alignleft alignright aligncenter alignjustify | bullist numlist | link unlink | image",
+            toolbar: "formatselect fontselect fontsizeselect | bold italic underline strikethrough forecolor backcolor | alignleft alignright aligncenter alignjustify | bullist numlist | link unlink | image",
             //theme: "advanced",
             entity_encoding: "raw",
             image_advtab: true,
             image_title: true,
-            plugins: "table fullscreen legacyoutput textcolor colorpicker link image",
+            plugins: "table fullscreen legacyoutput textcolor colorpicker link image code lists advlist",
             relative_urls: false,
             remove_script_host: false,
             document_base_url: "<?php echo esc_js(get_option('home')) ?>/",
@@ -288,9 +273,7 @@ if ($email['editor'] == 0) {
         margin-bottom: 10px;
         width: 100%;
     }
-    .CodeMirror {
-            height: 600px;
-        }
+
 </style>
 <script>
     function tnp_media(name) {
@@ -384,22 +367,13 @@ if ($email['editor'] == 0) {
                     <?php if ($email['editor'] == 0) { ?>
                     <input type="button" class="button-primary" value="Add media" onclick="tnp_media()">
 
-                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-tags" target="_blank"><?php _e('Available tags', 'newsletter') ?></a>
+                    <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-tags" target="_blank"><?php _e('Available tags', 'newsletter') ?></a>
                     <br><br>
                         
                         <?php $controls->editor('message', 30); ?>
                     
                     <?php } else { ?>
-
-                                        <input class="button-primary" type="button" onclick="newsletter_textarea_preview('options-message'); return false;" value="Switch editor/preview">
-
-                    <input type="button" class="button-primary" value="Add media" onclick="tnp_media()">
-
-                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-tags" target="_blank"><?php _e('Available tags', 'newsletter') ?></a>
-
-
-                    <br><br>
-                        <?php $controls->textarea_preview('message', '100%', 700, '', '', false); ?>
+                        <?php include __DIR__ . '/edit-html.php'; ?>
                     <?php } ?>
 
 
@@ -444,7 +418,7 @@ if ($email['editor'] == 0) {
                                 <p class="description">
                                     You can address the newsletter to subscribers who selected at least one of the options or to who
                                     has not selected at least one of the options.
-                                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about the "NOT ACTIVE" usage</a>.
+                                    <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about the "NOT ACTIVE" usage</a>.
                                 </p>
                             </td>
                         </tr>

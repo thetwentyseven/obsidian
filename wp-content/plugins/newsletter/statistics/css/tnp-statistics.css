@@ -128,9 +128,11 @@
 /* Urls Clicked */
 
 .widefat th {
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: #2C3E50;
-    text-transform: uppercase; 
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.1em;
 }
 
 .widefat {

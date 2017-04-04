@@ -10,12 +10,15 @@ if (!empty($_POST['tags'])) {
     $filters['tag'] = $_POST['tags'];
 }
 $posts = get_posts($filters);
+
+$bgcolor = isset($_POST['bgcolor']) ? $_POST['bgcolor'] : '#E6E9ED';
+
 ?>
 
 <!-- COMPACT ARTICLE SECTION -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tnpc-row tnpc-row-posts" data-id="content-06" data-block="content-06-posts">
     <tr>
-        <td bgcolor="#E6E9ED" align="center" style="padding: 70px 15px 70px 15px;" class="section-padding edit-block">
+        <td bgcolor="<?php echo $bgcolor ?>" align="center" style="padding: 70px 15px 70px 15px;" class="section-padding edit-block">
             <table border="0" cellpadding="0" cellspacing="0" width="500" style="padding:0 0 20px 0;" class="responsive-table">
                 <!-- TITLE -->
                 <tr>

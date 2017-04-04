@@ -263,6 +263,7 @@ tnp-profile form .tnp-field label {
     border-radius: 0px;
 }
 
+/* Comments Extension */
 .tnp-comments {
     clear: both;
     margin-top: 15px;
@@ -276,4 +277,17 @@ tnp-profile form .tnp-field label {
 .tnp-comments input[type=checkbox] {
     display: inline;
     width: auto!important;
+}
+
+
+/* Locked Content Extension */
+.tnp-lock {
+    clear: both;
+    display: block;
+    box-sizing: border-box;
+    box-shadow: none;
+    margin: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
 }

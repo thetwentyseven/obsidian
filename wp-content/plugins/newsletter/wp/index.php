@@ -80,7 +80,7 @@ if (!$controls->is_action()) {
         <p>Configure if and how a regular WordPress user registration can be connected to a Newsletter subscription.</p>
         <p>
             Important! This type of subscription does not require confirmation, it's automatic on first login.
-            <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#registration" target="_blank">Read more on documentation page</a>.
+            <a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#registration" target="_blank">Read more on documentation page</a>.
         </p>
 
     </div>
@@ -98,7 +98,7 @@ if (!$controls->is_action()) {
                         <?php $controls->select('subscribe', array(0 => 'No', 1 => 'Yes, force subscription', 2 => 'Yes, show the option', 3 => 'Yes, show the option already checked')); ?>
                         <p class="description">
                             Adds a newsletter subscription option on registration. 
-                            <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#registration" target="_blank">Read more</a>
+                            <a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#registration" target="_blank">Read more</a>
                         </p>
                     </td>
                 </tr>
@@ -147,7 +147,7 @@ if (!$controls->is_action()) {
                         <?php $controls->select('align_wp_users_status', array('C' => __('Confirmed', 'newsletter'), 'S' => __('Not confirmed', 'newsletter'))); ?>
                         <?php $controls->button_confirm('align_wp_users', __('Import', 'newsletter'), __('Proceed?', 'newsletter')); ?>
                         <p class="description">
-                            <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#import-wp-users" target="_blank">
+                            <a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#import-wp-users" target="_blank">
                                 <?php _e('Please, carefully read the documentation before taking this action!', 'newsletter') ?>
                             </a>
                         </p>

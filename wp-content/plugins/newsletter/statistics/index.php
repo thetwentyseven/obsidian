@@ -113,7 +113,7 @@ function percentValue($value, $total) {
             <?php $controls->init(); ?>
 
             <?php if (empty($emails)) { ?>
-                <img src="http://cdn.thenewsletterplugin.com/tnp-reports-dummy-image.png" style="max-width: 100%">
+                <img src="https://cdn.thenewsletterplugin.com/tnp-reports-dummy-image.png" style="max-width: 100%">
                 
             <?php } else { ?>
                 
@@ -239,7 +239,7 @@ function percentValue($value, $total) {
                             <div class="inside">
                                 <?php
                                 if (!has_action('newsletter_statistics_index_map')) {
-                                    ?><a href="http://www.thenewsletterplugin.com/premium?utm_source=plugin&utm_medium=link&utm_content=worldmap&utm_campaign=newsletter-reports" target="_blank">
+                                    ?><a href="https://www.thenewsletterplugin.com/premium?utm_source=plugin&utm_medium=link&utm_content=worldmap&utm_campaign=newsletter-reports" target="_blank">
                                         <img src="<?php echo plugins_url('newsletter') ?>/statistics/images/map.gif" style="width: 100%">
                                     </a><?php
                                 } else {

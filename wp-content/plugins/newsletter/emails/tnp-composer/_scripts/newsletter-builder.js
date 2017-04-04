@@ -1,3 +1,4 @@
+
 jQuery.fn.hover_edit = function () {
 
     this.hover(
@@ -25,6 +26,7 @@ jQuery.fn.hover_edit = function () {
                             target.find('img').attr("src", jQuery("#tnpc-edit-image .image").val());
                             target.find('img').attr("alt", jQuery("#tnpc-edit-image .alt").val());
                             target.find('a').attr("href", jQuery("#tnpc-edit-image .url").val());
+                            tnp_mobile_preview();
                         });
                     }
 
@@ -40,6 +42,7 @@ jQuery.fn.hover_edit = function () {
                             jQuery(this).parent().parent().slideUp(500)
                             target.text(jQuery("#tnpc-edit-link .title").val());
                             target.attr("href", jQuery("#tnpc-edit-link .url").val());
+                            tnp_mobile_preview();
                         });
                     }
 
@@ -64,6 +67,7 @@ jQuery.fn.hover_edit = function () {
                             target.css("color", jQuery("#tnpc-edit-button .fgcolor").val());
                             target.css("background-color", jQuery("#tnpc-edit-button .bgcolor").val());
                             target.css("border-color", jQuery("#tnpc-edit-button .bgcolor").val());
+                            tnp_mobile_preview();
                         });
                     }
 
@@ -84,61 +88,14 @@ jQuery.fn.hover_edit = function () {
                             jQuery(this).parent().parent().slideUp(500)
                             target.text(jQuery("#tnpc-edit-title .title").val());
                             target.css("color", jQuery("#tnpc-edit-title .color").val());
+                            tnp_mobile_preview();
                         });
                     }
 
                     //edit text
                     if (target.attr("data-type") == 'text') {
                         jQuery("#tnpc-edit-text .text").val(target.text());
-                        tinymce.init({
-                            selector: '#tnpc-edit-text .text',
-                            menubar: false,
-                            relative_urls: false,
-                            remove_script_host: false,
-                            toolbar: [
-                                'fontselect fontsizeselect forecolor | bold italic underline | link | bullist numlist | emoticons | alignleft aligncenter alignright alignjustify tnp'
-                            ],
-                            plugins: "textcolor,link,emoticons",
-                            init_instance_callback: function (editor) {
-                                editor.setContent(target.html());
-                            },
-                            elementpath: false,
-                            statusbar: false,
-                            forced_root_block: false,
-                            font_formats: "Arial=arial,helvetica,sans-serif" +
-                                    "Arial Black=arial black,avant garde;" +
-                                    "Tahoma=tahoma,arial,helvetica,sans-serif;" +
-                                    "Trebuchet MS=trebuchet ms,geneva;" +
-                                    "Verdana=verdana,geneva;" +
-                                    "Georgia=georgia,palatino;" +
-                                    "Times=times,times new roman;" +
-                                    "Times New Roman=times new roman,times;" +
-                                    "Courier=courier,courier new;" +
-                                    "Courier New=courier new,courier",
-                            setup: function (editor) {
-                                editor.addButton('tnp', {
-                                    type: 'menubutton',
-                                    image: tinymce.baseURL + '/skins/tnp.png',
-                                    menu: [
-                                        {text: '{blog_url}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{blog_url}&nbsp;');}},
-                                        {text: '{blog_title}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{blog_title}&nbsp;');}},
-                                        {text: '{blog_description}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{blog_description}&nbsp;');}},
-                                        {text: '{date}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{date}&nbsp;');}},
-                                        {text: '{date_NNN}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{date_NNN}&nbsp;');}},
-                                        {text: '{email_url}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{email_url}&nbsp;');}},
-                                        {text: '{name}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{name}&nbsp;');}},
-                                        {text: '{surname}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{surname}&nbsp;');}},
-                                        {text: '{title}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{title}&nbsp;');}},
-                                        {text: '{email}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{email}&nbsp;');}},
-                                        {text: '{profile_N}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{profile_N}&nbsp;');}},
-                                        {text: '{ip}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{ip}&nbsp;');}},
-                                        {text: '{subscription_confirm_url}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{subscription_confirm_url}&nbsp;');}},
-                                        {text: '{unsubscription_confirm_url}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{unsubscription_confirm_url}&nbsp;');}},
-                                        {text: '{profile_url}', onclick: function () {console.log(this.text); editor.insertContent('&nbsp;{profile_url}&nbsp;');}},
-                                    ],
-                                });
-                            },
-                        });
+
                         if (tinymce.activeEditor != null)
                             tinymce.activeEditor.setContent(target.html());
                         jQuery("#tnpc-edit-text").fadeIn(500);
@@ -147,6 +104,7 @@ jQuery.fn.hover_edit = function () {
                             jQuery(this).parent().parent().parent().fadeOut(500)
                             jQuery(this).parent().parent().slideUp(500)
                             target.html(tinymce.activeEditor.getContent());
+                            tnp_mobile_preview();
                         });
                     }
 
@@ -176,7 +134,9 @@ jQuery.fn.add_delete = function () {
 jQuery.fn.perform_delete = function () {
     this.click(function () {
         jQuery(this).parent().remove();
+        tnp_mobile_preview();
     });
+
 }
 
 jQuery.fn.add_block_edit = function () {
@@ -189,6 +149,8 @@ jQuery.fn.perform_block_edit = function () {
     jQuery(".tnpc-row-edit-block").click(function (e) {
         e.preventDefault()
     });
+
+
 
     this.click(function (e) {
 
@@ -206,12 +168,20 @@ jQuery.fn.perform_block_edit = function () {
         });
         jQuery('.bgcolor').wpColorPicker().iris('color', target.css("background-color"));
 
-        // posts block
+        // The row container which is a global variable and used later after the options save
+        $container = jQuery(this).closest("table");
         if (jQuery(this).parent().parent().hasClass('tnpc-row-posts')) {
 
             jQuery("#tnpc-edit-posts").fadeIn(500);
             jQuery("#tnpc-edit-posts .tnpc-edit-box").slideDown(500);
 
+        } else if ($container.hasClass('tnpc-row-block')) {
+            jQuery("#tnpc-block-options").fadeIn(500);
+            jQuery("#tnpc-block-options .tnpc-edit-box").slideDown(500);
+            // Qua bisogna mandare anche le opzioni
+            jQuery("#tnpc-block-options-form").load(ajaxurl, "action=tnpc_options&id=" + $container.data("id") + "&" + target.attr("data-options"), function (data) {
+
+            });
         } else {
 
             jQuery("#tnpc-edit-block").fadeIn(500);
@@ -228,6 +198,8 @@ jQuery.fn.perform_block_edit = function () {
 
         });
 
+
+
         jQuery("#tnpc-edit-posts .tnpc-edit-box-buttons-save").click(function () {
 
             jQuery(this).parent().parent().parent().fadeOut(500)
@@ -242,13 +214,15 @@ jQuery.fn.perform_block_edit = function () {
                 'b': target.parent().parent().parent().data('block') + ".block",
                 'num': jQuery("#tnpc-edit-posts .number").val(),
                 'tags': jQuery("#tnpc-edit-posts .tags").val(),
-                'categories': categories
+                'categories': categories,
+                'bgcolor': jQuery("#tnpc-edit-posts .bgcolor").val()
             };
             jQuery.post(ajaxurl, data, function (response) {
                 new_row = jQuery(response);
                 target.parent().before(new_row).remove();
                 new_row.add_delete();
                 new_row.add_block_edit();
+
                 new_row.find(".tnpc-row-edit").hover_edit();
             });
         });
@@ -261,18 +235,118 @@ jQuery(function () {
 
     // collapse wp menu
     jQuery('body').addClass('folded');
+    tinymce.init({
+        selector: '#tnpc-edit-text .text',
+        menubar: false,
+        relative_urls: false,
+        remove_script_host: false,
+        toolbar: [
+            'fontselect fontsizeselect forecolor | bold italic underline | link | bullist numlist | emoticons | alignleft aligncenter alignright alignjustify tnp'
+        ],
+        plugins: "textcolor,link,emoticons",
+        init_instance_callback: function (editor) {
+            //editor.setContent(target.html());
+        },
+        elementpath: false,
+        statusbar: false,
+        forced_root_block: false,
+        font_formats: "Arial=arial,helvetica,sans-serif" +
+                "Arial Black=arial black,avant garde;" +
+                "Tahoma=tahoma,arial,helvetica,sans-serif;" +
+                "Trebuchet MS=trebuchet ms,geneva;" +
+                "Verdana=verdana,geneva;" +
+                "Georgia=georgia,palatino;" +
+                "Times=times,times new roman;" +
+                "Times New Roman=times new roman,times;" +
+                "Courier=courier,courier new;" +
+                "Courier New=courier new,courier",
+        setup: function (editor) {
+            editor.addButton('tnp', {
+                type: 'menubutton',
+                //image: tinymce.baseURL + '/skins/tnp.png',
+                menu: [
+                    {text: '{blog_url}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{blog_url}&nbsp;');
+                        }},
+                    {text: '{blog_title}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{blog_title}&nbsp;');
+                        }},
+                    {text: '{blog_description}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{blog_description}&nbsp;');
+                        }},
+                    {text: '{date}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{date}&nbsp;');
+                        }},
+                    {text: '{date_NNN}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{date_NNN}&nbsp;');
+                        }},
+                    {text: '{email_url}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{email_url}&nbsp;');
+                        }},
+                    {text: '{name}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{name}&nbsp;');
+                        }},
+                    {text: '{surname}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{surname}&nbsp;');
+                        }},
+                    {text: '{title}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{title}&nbsp;');
+                        }},
+                    {text: '{email}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{email}&nbsp;');
+                        }},
+                    {text: '{profile_N}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{profile_N}&nbsp;');
+                        }},
+                    {text: '{ip}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{ip}&nbsp;');
+                        }},
+                    {text: '{subscription_confirm_url}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{subscription_confirm_url}&nbsp;');
+                        }},
+                    {text: '{unsubscription_confirm_url}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{unsubscription_confirm_url}&nbsp;');
+                        }},
+                    {text: '{profile_url}', onclick: function () {
+                            console.log(this.text);
+                            editor.insertContent('&nbsp;{profile_url}&nbsp;');
+                        }},
+                ],
+            });
+        },
+    });
 
 //Drag & Drop
     jQuery("#newsletter-builder-area-center-frame-content").sortable({
         revert: false,
-        stop: function (event, ui) {
+        //placeholder: "placeholder",
+        forcePlaceholderSize: true,
+        opacity: 0.6,
+        tolerance: "pointer",
+        update: function (event, ui) {
+            //debugger;
             if (ui.item.hasClass("newsletter-sidebar-buttons-content-tab")) {
                 loading_row = jQuery('<div style="text-align: center; padding: 20px; background-color: #d4d5d6; color: #52BE7F;"><i class="fa fa-cog fa-2x fa-spin" /></div>');
                 ui.item.before(loading_row);
                 ui.item.remove();
                 var data = {
                     'action': 'tnpc_render',
-                    'b': ui.item.data("file")
+                    'b': ui.item.data("file"),
+                    'full': 1
                 };
                 jQuery.post(ajaxurl, data, function (response) {
                     new_row = jQuery(response);
@@ -283,30 +357,35 @@ jQuery(function () {
                     new_row.add_delete();
                     new_row.add_block_edit();
                     new_row.find(".tnpc-row-edit").hover_edit();
+                    tnp_mobile_preview();
                 });
             }
         }
     });
 
-    jQuery(".tnpc-row").draggable({
-        connectToSortable: "#newsletter-builder-area-center-frame-content",
-        //helper: "clone",
-        revert: false,
-        handle: ".tnpc-row-move"
-    });
+//    jQuery(".tnpc-row").draggable({
+//        connectToSortable: "#newsletter-builder-area-center-frame-content",
+//        //helper: "clone",
+//        revert: false,
+//        handle: ".tnpc-row-move"
+//    });
 
     jQuery(".newsletter-sidebar-buttons-content-tab").draggable({
         connectToSortable: "#newsletter-builder-area-center-frame-content",
         helper: "clone",
         revert: false,
         start: function () {
-            if (jQuery('.tnpc-row').length)
+            if (jQuery('.tnpc-row').length) {
                 jQuery('.tnpc-row').append('<div class="tnpc-drop-here">Drag&Drop blocks here!</div>');
-            else
+            } else {
                 jQuery('#newsletter-builder-area-center-frame-content').append('<div class="tnpc-drop-here">Drag&Drop blocks here!</div>');
+            }
         },
-        stop: function () {
+        stop: function (event, ui) {
+            //debugger;
             jQuery('.tnpc-drop-here').remove();
+
+
         }
     });
 
@@ -316,12 +395,46 @@ jQuery(function () {
         jQuery(this).parent().parent().slideUp(500)
     });
 
+    jQuery("#tnpc-block-options .tnpc-edit-box-buttons-save").click(function () {
+        //alert(target.data('options'));
+        jQuery(this).parent().parent().parent().fadeOut(500)
+        jQuery(this).parent().parent().slideUp(500)
+
+        var data = jQuery("#tnpc-block-options-form").serialize();
+        var dataArray = jQuery("#tnpc-block-options-form").serializeArray()
+        var options = "";
+        for (var i = 0; i < dataArray.length; i++) {
+            //alert(dataArray[i]);
+            if (dataArray[i].name.startsWith("options"))
+                options += dataArray[i].name + "=" + encodeURIComponent(dataArray[i].value) + "&";
+        }
+        jQuery.post(ajaxurl, data, function (response) {
+            target.html(response);
+            target.attr("data-options", options);
+            target.find(".tnpc-row-edit").hover_edit();
+            tnp_mobile_preview();
+            //alert(data);
+        });
+    });
+
 // initialize controls
     jQuery(".tnpc-row").add_delete();
     jQuery(".tnpc-row").add_block_edit();
     jQuery(".tnpc-row-edit").hover_edit();
 
 });
+
+function tnp_mobile_preview() {
+    var d = document.getElementById("tnp-mobile-preview").contentWindow.document;
+    d.open();
+
+    d.write("<!DOCTYPE html><html><head>");
+    d.write("<link rel='stylesheet' href='" + TNP_HOME_URL + "?na=emails-composer-css&ver=" + Math.random() + "' type='text/css'");
+    d.write("</head><body style='margin: 0; padding: 0;'>");
+    d.write(jQuery("#newsletter-builder-area-center-frame-content").html());
+    d.write("</body></html>");
+    d.close();
+}
 
 function create() {
 

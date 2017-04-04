@@ -93,7 +93,7 @@ $controls = new NewsletterControls();
                 <div class="tab-preamble">
                     <p>
                         Subscriber count per list.
-                        <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about lists</a> and/or
+                        <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about lists</a> and/or
                         configure them from te "Lists" panel.
                     <p>
                 </div>

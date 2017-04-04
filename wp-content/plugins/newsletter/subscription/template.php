@@ -27,14 +27,14 @@ if (!$controls->is_action()) {
 
         $users = NewsletterUsers::instance()->get_test_users();
         if (count($users) == 0) {
-            $controls->errors = __('No test subscribers found.', 'newsletter') . ' <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank"><i class="fa fa-info-circle"></i></a>';
+            $controls->errors = __('No test subscribers found.', 'newsletter') . ' <a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank"><i class="fa fa-info-circle"></i></a>';
         } else {
             $template = $controls->data['template'];
             if (strpos($template, '{message}') === false) {
                 $template .= '{message}';
             }
             $message = '<p>This is a generic example of message embedded inside the template.</p>';
-            $message .= '<p>Subscriber data can be referenced by messages with tags. See the <a href="http://www.thenewsletterplugin.com">plugin documentation</a>.</p>';
+            $message .= '<p>Subscriber data can be referenced by messages with tags. See the <a href="https://www.thenewsletterplugin.com">plugin documentation</a>.</p>';
             $message .= '<p>First name: {name}</p>';
             $message .= '<p>Last name: {surname}</p>';
             $message .= '<p>Email: {email}</p>';
@@ -46,7 +46,7 @@ if (!$controls->is_action()) {
                 Newsletter::instance()->mail($user->email, 'Newsletter Messages Template Test', $newsletter->replace($message, $user));
             }
             $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers: ' .
-                    implode(', ', $addresses) . '.' . ' <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank"><i class="fa fa-info-circle"></i></a>';
+                    implode(', ', $addresses) . '.' . ' <a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank"><i class="fa fa-info-circle"></i></a>';
         }
     }
 }

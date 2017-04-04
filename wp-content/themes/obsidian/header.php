@@ -28,11 +28,10 @@
 			</div>
 			<div class="nav-pills navbar-right nav-social">
 				<ul class="inline">
-					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+					<li><a href="https://www.facebook.com/mediaobsidian/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="https://twitter.com/MediaObsidian" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a href="#" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+					<li><a href="#" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
 				</ul>
 			</div>
     </div>

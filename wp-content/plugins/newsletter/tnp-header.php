@@ -1,7 +1,8 @@
 <?php
 global $current_user, $wpdb, $newsletter;
 
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH'))
+    exit;
 
 $dismissed = get_option('newsletter_dismissed', array());
 
@@ -24,7 +25,6 @@ function newsletter_print_entries($group) {
         }
     }
 }
-
 ?>
 
 <div class="tnp-drowpdown" id="tnp-header">
@@ -59,8 +59,10 @@ function newsletter_print_entries($group) {
                         <small><?php _e('Profile the subscribers for a better targeting', 'newsletter') ?></small></a></li>
                 <li><a href="?page=newsletter_subscription_unsubscription"><i class="fa fa-sign-out"></i> <?php _e('Unsubscription', 'newsletter') ?>
                         <small><?php _e('How to give the last goodbye (or avoid it!)', 'newsletter') ?></small></a></li>
+                <?php if (!file_exists(WP_PLUGIN_DIR . '/newsletter-lock')) { ?>       
                 <li><a href="?page=newsletter_lock_index"><i class="fa fa-lock"></i> <?php _e('Locked Content', 'newsletter') ?>
                         <small><?php _e('Make your best content available only upon subscription', 'newsletter') ?></small></a></li>
+                <?php } ?>     
                 <li><a href="?page=newsletter_subscription_forms"><i class="fa fa-pencil"></i> <?php _e('Custom Forms', 'newsletter') ?>
                         <small><?php _e('Hand coded form storage', 'newsletter') ?></small></a></li>
                 <li><a href="?page=newsletter_subscription_template"><i class="fa fa-file-text-o"></i> <?php _e('Messages Template', 'newsletter') ?>
@@ -83,8 +85,6 @@ function newsletter_print_entries($group) {
         </li>
         <li><a href="#"><i class="fa fa-cog"></i> <?php _e('Settings', 'newsletter') ?> <i class="fa fa-chevron-down"></i></a>
             <ul>
-                <li><a href="?page=newsletter_main_startup"><i class="fa fa-fighter-jet"></i> <?php _e('Quick Startup', 'newsletter') ?>
-                        <small><?php _e('The minimum you need to start', 'newsletter') ?></small></a></li>
                 <li><a href="?page=newsletter_main_main"><i class="fa fa-cogs"></i> <?php _e('General Settings', 'newsletter') ?>
                         <small><?php _e('Delivery speed, sender details, ...', 'newsletter') ?></small></a></li>
                 <li><a href="?page=newsletter_main_info"><i class="fa fa-info"></i> <?php _e('Company Info', 'newsletter') ?>
@@ -102,7 +102,7 @@ function newsletter_print_entries($group) {
         <?php
         if (empty(Newsletter::instance()->options['contract_key'])) {
             ?>
-            <li class="tnp-professional-extensions-button"><a href="http://www.thenewsletterplugin.com/premium?utm_source=plugin&utm_medium=link&utm_campaign=header" target="_blank">
+            <li class="tnp-professional-extensions-button"><a href="https://www.thenewsletterplugin.com/premium?utm_source=plugin&utm_medium=link&utm_campaign=header" target="_blank">
                     <i class="fa fa-trophy"></i> <?php _e('Get Professional Extensions', 'newsletter') ?></a>
             </li>
         <?php } else {
@@ -132,46 +132,7 @@ function newsletter_print_entries($group) {
 </div>
 
 
-<?php if (false && NEWSLETTER_HEADER) { ?>
-    <div id="tnp-header">
-        <!--
-            <a href="http://www.thenewsletterplugin.com" target="_blank"><img src="<?php echo plugins_url('newsletter'); ?>/images/header/logo.png" style="height: 30px; margin-bottom: 10px; display: block;"></a>
-
-            <div style="border-top: 1px solid white; width: 100%; margin-bottom: 10px;"></div>
-        -->
-        <?php if (NEWSLETTER_DEBUG) { ?>
-            <img src="<?php echo plugins_url('newsletter'); ?>/images/header/debug.png" style="vertical-align: middle;" title="Debug mode active!">&nbsp;&nbsp;&nbsp;
-        <?php } ?>
-        <img src="<?php echo plugins_url('newsletter'); ?>/images/header/logo.png" style="vertical-align: middle;">
-
-        <a href="http://www.thenewsletterplugin.com/?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-extensions&utm_content=<?php echo NEWSLETTER_VERSION ?>" target="_blank" style="font-weight: bold; font-size: 13px; text-transform: uppercase">
-            Get the Professional Extensions!
-        </a>
-        &nbsp;&nbsp;&nbsp;
-        <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation" target="_blank">
-            <i class="fa fa-file-text"></i> Documentation
-        </a>
-        &nbsp;&nbsp;
-        <a href="http://www.thenewsletterplugin.com/forums" target="_blank">
-            <i class="fa fa-life-ring"></i> Forum
-        </a>
-        &nbsp;&nbsp;
-        <a href="https://www.facebook.com/thenewsletterplugin
-           " target="_blank">
-            <i class="fa fa-facebook-square"></i> Facebook
-        </a>
-        &nbsp;&nbsp;
-        Stay updated: 
-        <form target="_blank" style="display: inline" action="http://www.thenewsletterplugin.com/wp-content/plugins/newsletter/subscribe.php" method="post">
-            <input type="email" name="ne" placeholder="Your email" required size="30" value="<?php echo esc_attr($current_user->user_email) ?>">
-            <input type="hidden" name="nr" value="plugin">
-            <input type="submit" value="Go">
-        </form>
-
-    </div>
-<?php } ?>
-
-<?php if (NEWSLETTER_DEBUG || !isset($dismissed['rate']) && $user_count > 300) { ?>
+<?php if (isset($_GET['debug']) || !isset($dismissed['rate']) && $user_count > 300) { ?>
     <div class="tnp-notice">
         <a href="<?php echo $_SERVER['REQUEST_URI'] . '&noheader=1&dismiss=rate' ?>" class="tnp-dismiss">&times;</a>
 
@@ -181,13 +142,37 @@ function newsletter_print_entries($group) {
     </div>
 <?php } ?>
 
-<?php if (NEWSLETTER_DEBUG || !isset($dismissed['newsletter-page']) && empty(NewsletterSubscription::instance()->options['page'])) { ?>
+<?php if (isset($_GET['debug']) || !isset($dismissed['newsletter-page']) && empty(NewsletterSubscription::instance()->options['page'])) { ?>
     <div class="tnp-notice">
         <a href="<?php echo $_SERVER['REQUEST_URI'] . '&noheader=1&dismiss=newsletter-page' ?>" class="tnp-dismiss">&times;</a>
 
         You should create a blog page to show the subscription form and the subscription messages. Go to the
         <a href="?page=newsletter_subscription_options">subscription panel</a> to configure it.
 
+    </div>
+<?php } ?>
+
+<?php /*
+$newsletter_lock_options = get_option('newsletter_lock');
+if (isset($_GET['debug']) || !isset($dismissed['newsletter-lock']) && !file_exists(WP_PLUGIN_DIR . '/newsletter-lock') && !empty($newsletter_lock_options['enabled'])) { ?>
+    <div class="tnp-notice">
+        <a href="<?php echo $_SERVER['REQUEST_URI'] . '&noheader=1&dismiss=newsletter-lock' ?>" class="tnp-dismiss">&times;</a>
+        The <strong>Locked Content</strong> feature is now managed with a free extension. Please install it from the 
+        <a href="?page=newsletter_main_extensions">Extensions panel</a>. Thank you.
+    </div>
+<?php } */ ?>
+
+
+<?php if (isset($_GET['debug']) || !isset($dismissed['newsletter-subscribe']) && get_option('newsletter_install_time') && get_option('newsletter_install_time') < time() - 86400 * 15) { ?>
+    <div class="tnp-notice">
+        <a href="<?php echo $_SERVER['REQUEST_URI'] . '&noheader=1&dismiss=newsletter-subscribe' ?>" class="tnp-dismiss">&times;</a>
+        If you want to be informed of important updates of Newsletter, you may want to subscribe to our newsletter<br>
+        <form action="https://www.thenewsletterplugin.com/?na=s" target="_blank" method="post">
+            <input type="hidden" value="plugin" name="nr">
+            <input type="hidden" value="3" name="nl[]">
+            <input type="email" name="ne" value="<?php echo esc_attr(get_option('admin_email')) ?>">
+            <input type="submit" value="<?php esc_attr_e('Subscribe', 'newsletter') ?>">
+        </form>
     </div>
 <?php } ?>
 

@@ -2,19 +2,19 @@
 
 /*
   Plugin Name: Newsletter
-  Plugin URI: http://www.thenewsletterplugin.com/plugins/newsletter
-  Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="http://www.thenewsletterplugin.com/category/release">this page</a> to know what's changed.</strong>
-  Version: 4.8.3
+  Plugin URI: https://www.thenewsletterplugin.com/plugins/newsletter
+  Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="https://www.thenewsletterplugin.com/category/release">this page</a> to know what's changed.</strong>
+  Version: 4.8.7
   Author: Stefano Lissa & The Newsletter Team
-  Author URI: http://www.thenewsletterplugin.com
+  Author URI: https://www.thenewsletterplugin.com
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
   Text Domain: newsletter
 
-  Copyright 2009-2017 The Newsletter Team (email: info@thenewsletterplugin.com, web: http://www.thenewsletterplugin.com)
+  Copyright 2009-2017 The Newsletter Team (email: info@thenewsletterplugin.com, web: https://www.thenewsletterplugin.com)
  */
 
 // Used as dummy parameter on css and js links
-define('NEWSLETTER_VERSION', '4.8.3');
+define('NEWSLETTER_VERSION', '4.8.7');
 
 global $wpdb, $newsletter;
 
@@ -202,9 +202,7 @@ class Newsletter extends NewsletterModule {
                 wp_schedule_event(time() + 30, 'newsletter', 'newsletter');
             }
 
-            add_action('wp_ajax_tnpc_render', 'tnpc_render_callback');
-            add_action('wp_ajax_tnpc_preview', 'tnpc_preview_callback');
-            add_action('wp_ajax_tnpc_css', 'tnpc_css_callback');
+           
 
             add_action('admin_menu', array($this, 'add_extensions_menu'), 90);
         }
@@ -221,6 +219,11 @@ class Newsletter extends NewsletterModule {
         // the upgrade method as well for the user which upgrade the plugin without deactivte it (many).
         if (!wp_next_scheduled('newsletter')) {
             wp_schedule_event(time() + 30, 'newsletter', 'newsletter');
+        }
+        
+        $install_time = get_option('newsletter_install_time');
+        if (!$install_time) {
+            update_option('newsletter_install_time', time(), false);
         }
     }
 
@@ -392,11 +395,11 @@ class Newsletter extends NewsletterModule {
         if ($x === false) {
             $warnings .= 'The delivery engine is off (it should never be off). Deactivate and reactivate the plugin. Thank you.<br>';
         } else if (time() - $x > 900) {
-            $warnings .= 'The cron system seems not running correctly. See <a href="http://www.thenewsletterplugin.com/how-to-make-the-wordpress-cron-work" target="_blank">this page</a> for more information.<br>';
+            $warnings .= 'The cron system seems not running correctly. See <a href="https://www.thenewsletterplugin.com/how-to-make-the-wordpress-cron-work" target="_blank">this page</a> for more information.<br>';
         } else {
             $cron_data = get_option('newsletter_diagnostic_cron_data');
             if ($cron_data && $cron_data['mean'] > 400) {
-                $warnings .= 'The WordPress internal schedule is not triggered enough often. See <a href="http://www.thenewsletterplugin.com/how-to-make-the-wordpress-cron-work" target="_blank">this page</a> for more information.<br>';
+                $warnings .= 'The WordPress internal schedule is not triggered enough often. See <a href="https://www.thenewsletterplugin.com/how-to-make-the-wordpress-cron-work" target="_blank">this page</a> for more information.<br>';
             }
         }
 
@@ -435,8 +438,9 @@ class Newsletter extends NewsletterModule {
         }
 
         $action = isset($_REQUEST['na']) ? $_REQUEST['na'] : '';
-        if (empty($action) || is_admin())
+        if (empty($action) || is_admin()) {
             return;
+        }
 
         // TODO: Remove!
         $cache_stop = true;
@@ -449,8 +453,9 @@ class Newsletter extends NewsletterModule {
 
         if ($action == 'fu') {
             $user = $this->check_user();
-            if ($user == null)
+            if ($user == null) {
                 die('No user');
+            }
             $wpdb->query("update " . NEWSLETTER_USERS_TABLE . " set followup=2 where id=" . $user->id);
             $options_followup = get_option('newsletter_followup');
             $this->message = $options_followup['unsubscribed_text'];
@@ -476,6 +481,10 @@ class Newsletter extends NewsletterModule {
     }
 
     function hook_admin_head() {
+        // Small global rule for sidebar menu entries
+        echo '<style>';
+        echo '.tnp-side-menu { color: #E67E22!important; }';
+        echo '</style>';
         if ($this->is_admin_page()) {
             echo '<link type="text/css" rel="stylesheet" href="' . plugins_url('newsletter') . '/admin.css?' . time() . '"/>';
             echo '<script src="' . plugins_url('newsletter') . '/admin.js?' . NEWSLETTER_VERSION . '"></script>';
@@ -1286,7 +1295,7 @@ class Newsletter extends NewsletterModule {
         if (!$force && !defined('NEWSLETTER_EXTENSION')) {
             return;
         }
-        $response = wp_remote_get('http://www.thenewsletterplugin.com/wp-content/versions/all.txt');
+        $response = wp_remote_get('https://www.thenewsletterplugin.com/wp-content/versions/all.txt');
         if (is_wp_error($response)) {
             $this->logger->error($response);
             return;
@@ -1366,10 +1375,10 @@ class Newsletter extends NewsletterModule {
         $value->response[$extension->plugin] = $plugin;
 
         if (defined('NEWSLETTER_LICENSE_KEY')) {
-            $value->response[$extension->plugin]->package = 'http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/get.php?f=' . $extension->id .
+            $value->response[$extension->plugin]->package = 'https://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/get.php?f=' . $extension->id .
                     '&k=' . NEWSLETTER_LICENSE_KEY;
         } else {
-            $value->response[$extension->plugin]->package = 'http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/get.php?f=' . $extension->id .
+            $value->response[$extension->plugin]->package = 'https://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/get.php?f=' . $extension->id .
                     '&k=' . Newsletter::instance()->options['contract_key'];
         }
 
@@ -1385,9 +1394,9 @@ class Newsletter extends NewsletterModule {
         $extensions_json = get_transient('tnp_extensions_json');
 
         if (false === $extensions_json) {
-            $url = "http://www.thenewsletterplugin.com/wp-content/extensions.json";
+            $url = "https://www.thenewsletterplugin.com/wp-content/extensions.json";
             if (!empty($this->options['contract_key'])) {
-                $url = "http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/extensions.php?k=" . $this->options['contract_key'];
+                $url = "https://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/extensions.php?k=" . $this->options['contract_key'];
             }
 
             $extensions_response = wp_remote_get($url);
@@ -1435,7 +1444,9 @@ require_once NEWSLETTER_DIR . '/subscription/subscription.php';
 require_once NEWSLETTER_DIR . '/emails/emails.php';
 require_once NEWSLETTER_DIR . '/users/users.php';
 require_once NEWSLETTER_DIR . '/statistics/statistics.php';
-require_once NEWSLETTER_DIR . '/lock/lock.php';
+if (!file_exists(WP_PLUGIN_DIR . '/newsletter-lock')) {
+    require_once NEWSLETTER_DIR . '/lock/lock.php';
+}
 require_once NEWSLETTER_DIR . '/wp/wp.php';
 
 if (!is_dir(WP_PLUGIN_DIR . '/newsletter-feed')) {
@@ -1499,7 +1510,7 @@ function newsletter_activate() {
     NewsletterEmails::instance()->upgrade();
     NewsletterSubscription::instance()->upgrade();
     NewsletterStatistics::instance()->upgrade();
-    NewsletterLock::instance()->upgrade();
+    //NewsletterLock::instance()->upgrade();
     NewsletterWp::instance()->upgrade();
 }
 
@@ -1507,30 +1518,4 @@ register_activation_hook(__FILE__, 'newsletter_deactivate');
 
 function newsletter_deactivate() {
     
-}
-
-function tnpc_render_callback() {
-    $block_options = get_option('newsletter_main');
-    include NEWSLETTER_DIR . '/emails/tnp-composer/blocks/' . sanitize_file_name($_POST['b']) . '.php';
-    wp_die(); // this is required to terminate immediately and return a proper response
-}
-
-function tnpc_preview_callback() {
-
-    $id = (int) ($_POST['id'] ? $_POST['id'] : $_GET['id']);
-    $email = Newsletter::instance()->get_email($id, ARRAY_A);
-
-    if (empty($email)) {
-        echo 'Wrong email identifier';
-        return;
-    }
-
-    echo $email['message'];
-
-    wp_die(); // this is required to terminate immediately and return a proper response
-}
-
-function tnpc_css_callback() {
-    include NEWSLETTER_DIR . '/emails/tnp-composer/css/newsletter.css';
-    wp_die(); // this is required to terminate immediately and return a proper response
 }

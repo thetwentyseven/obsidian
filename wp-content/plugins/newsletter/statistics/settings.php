@@ -62,7 +62,7 @@ if ($controls->is_action('save')) {
                     if (!has_action('newsletter_statistics_settings_countries')) {
                         ?>
                         <p>This panel contains information about country detection added by 
-                            <a href="http://www.thenewsletterplugin.com/plugins/newsletter/reports-module" target="_blank">Reports Extension</a>.</p>
+                            <a href="https://www.thenewsletterplugin.com/plugins/newsletter/reports-module" target="_blank">Reports Extension</a>.</p>
                         <?php
                     } else {
                         do_action('newsletter_statistics_settings_countries', $controls);

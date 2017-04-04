@@ -98,7 +98,7 @@ if (!defined('ABSPATH'))
 
                         <p>
                             See you soon, TNT.<br>
-                                <a href="<?php echo get_option('blogname'); ?>">http://www.thenewsletterplugin.com</a>
+                                <a href="<?php echo get_option('blogname'); ?>">https://www.thenewsletterplugin.com</a>
                         </p>
 
                     </td>

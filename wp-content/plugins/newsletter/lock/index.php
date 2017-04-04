@@ -27,7 +27,7 @@ if (!$controls->is_action()) {
 
         <h2><?php _e('Locked Content', 'newsletter') ?></h2>
         <p>
-            Please, <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-locked-content" target="_blank">read more here how to use and configure</a>,
+            Please, <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-locked-content" target="_blank">read more here how to use and configure</a>,
             since it can incredibly increase your subscription rate.
         </p>
 

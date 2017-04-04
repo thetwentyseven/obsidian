@@ -1,5 +1,7 @@
 <?php
-if (!defined('ABSPATH')) exit;
+
+if (!defined('ABSPATH'))
+    exit;
 
 require_once NEWSLETTER_INCLUDES_DIR . '/themes.php';
 require_once NEWSLETTER_INCLUDES_DIR . '/module.php';
@@ -22,6 +24,92 @@ class NewsletterEmails extends NewsletterModule {
         $this->themes = new NewsletterThemes('emails');
         parent::__construct('emails', '1.1.5');
         add_action('wp_loaded', array($this, 'hook_wp_loaded'));
+
+        if (is_admin()) {
+            add_action('wp_ajax_tnpc_render', array($this, 'tnpc_render_callback'));
+            add_action('wp_ajax_tnpc_preview', array($this, 'tnpc_preview_callback'));
+            add_action('wp_ajax_tnpc_css', array($this, 'tnpc_css_callback'));
+            add_action('wp_ajax_tnpc_options', array($this, 'hook_wp_ajax_tnpc_options'));
+        }
+    }
+
+    function hook_wp_ajax_tnpc_options() {
+        global $wpdb;
+
+        $block = $this->get_block($_REQUEST['id']);
+        if (!$block) {
+            die('Block not found with id ' . esc_html($_REQUEST['id']));
+        }
+
+        if (!class_exists('NewsletterControls')) {
+            include NEWSLETTER_INCLUDES_DIR . '/controls.php';
+        }
+        $options = stripslashes_deep($_REQUEST['options']);
+        $controls = new NewsletterControls($options);
+
+        $controls->init();
+        echo '<input type="hidden" name="action" value="tnpc_render">';
+        echo '<input type="hidden" name="b" value="' . esc_attr($_REQUEST['id']) . '">';
+
+        ob_start();
+        include $block['dir'] . '/options.php';
+        $content = ob_get_clean();
+        echo $content;
+        wp_die();
+    }
+
+    function tnpc_render_callback() {
+        $block_options = get_option('newsletter_main');
+        $block = $this->get_block($_POST['b']);
+        if ($block) {
+
+            if (isset($_POST['options']) && is_array($_POST['options'])) {
+                $options = stripslashes_deep($_POST['options']);
+            } else {
+                $options = array();
+            }
+
+            ob_start();
+            include $block['dir'] . '/block.php';
+            $content = ob_get_clean();
+            $content = $this->inline_css($content, true);
+
+            $data = '';
+            foreach ($options as $key => $value) {
+                $data .= 'options[' . $key . ']=' . urlencode($value) . '&';
+            }
+
+            if (isset($_POST['full'])) {
+                echo '<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tnpc-row tnpc-row-block" data-id="', esc_attr($_POST['b']), '">';
+                echo '<tr>';
+                echo '<td data-options="', esc_attr($data), '" bgcolor="#ffffff" align="center" style="padding: 20px 15px 20px 15px; font-family: Helvetica, Arial, sans-serif;" class="section-padding edit-block">';
+            }
+            echo $content;
+            if (isset($_POST['full'])) {
+                echo '</td></tr></table>';
+            }
+            wp_die();
+        }
+        include NEWSLETTER_DIR . '/emails/tnp-composer/blocks/' . sanitize_file_name($_POST['b']) . '.php';
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+
+    function tnpc_preview_callback() {
+        $email = Newsletter::instance()->get_email($_REQUEST['id'], ARRAY_A);
+
+        if (empty($email)) {
+            echo 'Wrong email identifier';
+            return;
+        }
+
+        echo $email['message'];
+
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+
+    function tnpc_css_callback() {
+        include NEWSLETTER_DIR . '/emails/tnp-composer/css/newsletter.css';
+        wp_die(); // this is required to terminate immediately and return a proper response
     }
 
     function hook_wp_loaded() {
@@ -45,7 +133,7 @@ class NewsletterEmails extends NewsletterModule {
                 header('Content-Type: text/html;charset=UTF-8');
                 header('X-Robots-Tag: noindex,nofollow,noarchive');
                 header('Cache-Control: no-cache,no-store,private');
-                
+
                 // TODO: To be removed
                 if (is_file(WP_CONTENT_DIR . '/extensions/newsletter/view.php')) {
                     include WP_CONTENT_DIR . '/extensions/newsletter/view.php';
@@ -73,6 +161,26 @@ class NewsletterEmails extends NewsletterModule {
 
                 echo substr($body, $x + 1, $y - $x - 1);
 
+                die();
+                break;
+
+            case 'emails-composer-css':
+                header('Cache: no-cache');
+                header('Content-Type: text/css');
+                echo file_get_contents(__DIR__ . '/tnp-composer/css/newsletter.css');
+                $dirs = apply_filters('newsletter_blocks_dir', array());
+                foreach ($dirs as $dir) {
+
+                    $list = NewsletterEmails::instance()->scan_blocks_dir($dir);
+
+                    foreach ($list as $key => $data) {
+                        if (!file_exists($data['dir'] . '/style.css')) continue;
+                        echo "\n\n";
+                        echo "/* ", $data['name'], " */\n";
+                        echo file_get_contents($data['dir'] . '/style.css');
+                    }
+                }
+                
                 die();
                 break;
 
@@ -270,6 +378,80 @@ class NewsletterEmails extends NewsletterModule {
 
             $newsletter->save_email($email);
         }
+    }
+
+    function scan_blocks_dir($dir) {
+
+        if (!is_dir($dir)) {
+            return array();
+        }
+
+        $handle = opendir($dir);
+        $list = array();
+        $relative_dir = substr($dir, strlen(WP_CONTENT_DIR));
+        while ($file = readdir($handle)) {
+
+            // The block unique key, we should find out how to biuld it, maybe an hash of the (relative) dir?
+            $key = $relative_dir . '/' . $file;
+
+            $full_file = $dir . '/' . $file . '/block.php';
+            if (!is_file($full_file)) {
+                continue;
+            }
+
+            $data = get_file_data($full_file, array('name' => 'Name', 'section' => 'Section', 'description' => 'Description'));
+
+            if (empty($data['name'])) {
+                $data['name'] = $file;
+            }
+            if (empty($data['section'])) {
+                $data['section'] = 'content';
+            }
+            if (empty($data['description'])) {
+                $data['description'] = '';
+            }
+            // Absolute path of the block files
+            $data['dir'] = $dir . '/' . $file;
+
+            $data['icon'] = content_url($relative_dir . '/' . $file . '/icon.png');
+            $list[$key] = $data;
+        }
+        closedir($handle);
+        return $list;
+    }
+
+    function get_blocks() {
+        /* READ THE BLOCKS */
+        $blocks_dir = NEWSLETTER_DIR . '/emails/tnp-composer/blocks/';
+        $files = glob($blocks_dir . '*.block.php', GLOB_BRACE);
+        $blocks = array();
+        foreach ($files as $file) {
+            $path_parts = pathinfo($file);
+            $filename = $path_parts['filename'];
+            $section = substr($filename, 0, strpos($filename, '-'));
+            $index = substr($filename, strpos($filename, '-') + 1, 2);
+            $blocks[$index]['name'] = substr($filename, strrpos($filename, '-') + 1);
+            $blocks[$index]['filename'] = $filename;
+            $blocks[$index]['icon'] = plugins_url('newsletter') . '/emails/tnp-composer/blocks/' . $filename . '.png';
+            $blocks[$index]['section'] = $section;
+            $blocks[$index]['description'] = '';
+        }
+
+        $dirs = apply_filters('newsletter_blocks_dir', array());
+
+        foreach ($dirs as $dir) {
+            $list = $this->scan_blocks_dir($dir);
+            $blocks = array_merge($blocks, $list);
+        }
+        return $blocks;
+    }
+
+    function get_block($id) {
+        $blocks = $this->get_blocks();
+        if (!isset($blocks[$id])) {
+            return null;
+        }
+        return $blocks[$id];
     }
 
 }

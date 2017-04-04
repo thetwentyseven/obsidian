@@ -1,5 +1,6 @@
 <?php
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH'))
+    exit;
 
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
@@ -29,10 +30,10 @@ if (!$controls->is_action()) {
     $email_options = unserialize($email['options']);
     if (is_array($email_options)) {
         $controls->data = array_merge($controls->data, $email_options);
-        
-        foreach ($email_options as $name=>$value) {
+
+        foreach ($email_options as $name => $value) {
             $controls->data['options_' . $name] = $value;
-        }        
+        }
     }
 }
 
@@ -60,12 +61,12 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
         $email['options']['sex'] = $controls->data['sex'];
     }
 
-    foreach($controls->data as $name=>$value) {
+    foreach ($controls->data as $name => $value) {
         if (strpos($name, 'options_') === 0) {
             $email['options'][substr($name, 8)] = $value;
         }
     }
-    
+
     $email['options']['status'] = $controls->data['status'];
     $email['options']['preferences_status_operator'] = $controls->data['preferences_status_operator'];
     $email['options']['wp_users'] = $controls->data['wp_users'];
@@ -138,8 +139,8 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     } else {
         $email['total'] = $wpdb->get_var(str_replace('*', 'count(*)', $query));
     }
-    
-    
+
+
     if ($controls->is_action('send') && $controls->data['send_on'] < time()) {
         $controls->data['send_on'] = time();
     }
@@ -208,7 +209,7 @@ if ($controls->is_action('test')) {
         }
 
         $controls->messages .= '<br>';
-        $controls->messages .= '<a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">' .
+        $controls->messages .= '<a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">' .
                 __('Read more about test subscribers', 'newsletter') . '</a>.';
 
         $controls->messages .= '<br>If diagnostic emails are delivered but test emails are not, try to change the encoding to "base 64" on main configuration panel';
@@ -228,9 +229,15 @@ if ($controls->is_action('test')) {
 //        $controls->data['message'] = substr($controls->data['message'], $x + 1, $y - $x - 1);
 //    }
 //}
-
 ?>
-
+<style>
+    #options-subject {
+        font-size: 20px;
+        display: inline-block;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+</style>
 <div class="wrap" id="tnp-wrap">
 
     <?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
@@ -265,6 +272,8 @@ if ($controls->is_action('test')) {
                 <?php if ($email['status'] != 'sending' && $email['status'] != 'sent') $controls->button_confirm('editor', 'Save and switch to ' . ($email['editor'] == 0 ? 'HTML source editor' : 'Preview'), 'Sure?'); ?>
             </p>
 
+            <?php $controls->text('subject', 70, 'Subject'); ?>
+
             <div id="tabs">
                 <ul>
                     <li><a href="#tabs-a"><?php _e('Message', 'newsletter') ?></a></li>
@@ -275,13 +284,7 @@ if ($controls->is_action('test')) {
                 </ul>
 
 
-                <div id="tabs-a" class="tnpc-subject">
-
-                    <?php $controls->text('subject', 100, 'Subject'); ?>
-
-                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-tags" target="_blank"><?php _e('Available tags', 'newsletter') ?></a>
-
-                    <br><br>
+                <div id="tabs-a">
 
                     <?php if ($email['editor'] == 0) { ?>
 
@@ -315,30 +318,9 @@ if ($controls->is_action('test')) {
                             }, 500);
                         </script>
 
-                        <?php
-                    } else {
-
-//                        $controls->textarea_preview('message', '100%', '700');
-                        ?>
-                        
-                        <input id="options-message" name="options[message]" type="hidden">
-                        
-                        <div id="tnpc-html-editor"><?php echo esc_html($email['message']) ?></div>
-                        <script src="<?php echo plugins_url('newsletter') ?>/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
-                        <script>
-                            var editor = ace.edit("tnpc-html-editor");
-                            editor.setTheme("ace/theme/idle_fingers");
-                            editor.getSession().setMode("ace/mode/html");
-                            var message_input = jQuery('#options-message');
-//                            editor.getSession().setValue(message_input.val());
-                            message_input.val(editor.getSession().getValue());
-                            editor.getSession().on('change', function () {
-                                message_input.val(editor.getSession().getValue());
-                            });
-                        </script>
-
-<?php }
-?>
+                        <?php } else { ?>
+                            <?php include __DIR__ . '/edit-html.php'; ?>
+                        <?php } ?>
 
                 </div>
 
@@ -349,7 +331,7 @@ if ($controls->is_action('test')) {
                         is an anti-spam best practice to include a text only version.
                     </p>
 
-<?php $controls->textarea_fixed('message_text', '100%', '500'); ?>
+                    <?php $controls->textarea_fixed('message_text', '100%', '500'); ?>
                 </div>
 
 
@@ -359,7 +341,7 @@ if ($controls->is_action('test')) {
                         <tr valign="top">
                             <th><?php _e('Gender', 'newsletter'); ?></th>
                             <td>
-<?php $controls->checkboxes_group('sex', array('f' => 'Women', 'm' => 'Men', 'n' => 'Not specified')); ?>
+                                <?php $controls->checkboxes_group('sex', array('f' => 'Women', 'm' => 'Men', 'n' => 'Not specified')); ?>
                                 <p class="description">
                                     Leaving all gender options unselected disable this filter.
                                 </p>
@@ -369,7 +351,7 @@ if ($controls->is_action('test')) {
                             <th><?php _e('Lists', 'newsletter'); ?></th>
                             <td>
                                 Subscribers with
-<?php $controls->select('preferences_status_operator', array(0 => 'at least one list', 1 => 'all lists')); ?>
+                                <?php $controls->select('preferences_status_operator', array(0 => 'at least one list', 1 => 'all lists')); ?>
 
                                 <?php $controls->select('preferences_status', array(0 => 'active', 1 => 'not active')); ?>
                                 <?php _e('checked below', 'newsletter') ?>
@@ -378,7 +360,7 @@ if ($controls->is_action('test')) {
                                 <p class="description">
                                     You can address the newsletter to subscribers who selected at least one of the options or to who
                                     has not selected at least one of the options.
-                                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about the "NOT ACTIVE" usage</a>.
+                                    <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about the "NOT ACTIVE" usage</a>.
                                 </p>
                             </td>
                         </tr>
@@ -386,33 +368,33 @@ if ($controls->is_action('test')) {
                         <tr valign="top">
                             <th><?php _e('Status', 'newsletter') ?></th>
                             <td>
-<?php $controls->select('status', array('C' => __('Confirmed', 'newsletter'), 'S' => __('Not confirmed', 'newsletter'))); ?>
+                                <?php $controls->select('status', array('C' => __('Confirmed', 'newsletter'), 'S' => __('Not confirmed', 'newsletter'))); ?>
 
                                 <p class="description">
-<?php _e('Send to not confirmed subscribers ONLY to ask for confirmation including the {subscription_confirm_url} tag.', 'newsletter') ?>
+                                    <?php _e('Send to not confirmed subscribers ONLY to ask for confirmation including the {subscription_confirm_url} tag.', 'newsletter') ?>
                                 </p>
                             </td>
                         </tr>
                         <tr valign="top">
                             <th>Only to WordPress users?</th>
                             <td>
-<?php $controls->yesno('wp_users'); ?>
+                                <?php $controls->yesno('wp_users'); ?>
 
                                 <p class="description">
-                                    Limit to the subscribers which are WordPress users as well.
+                                    Limit to the subscribers which are WordPress users.
                                 </p>
                             </td>
                         </tr>
                         <tr valign="top">
                             <th>
-<?php _e('Subscribers count', 'newsletter') ?>
+                                <?php _e('Subscribers count', 'newsletter') ?>
                             </th>
                             <td>
-<?php
-echo $wpdb->get_var(str_replace('*', 'count(*)', $email['query']));
-?>
+                                <?php
+                                echo $wpdb->get_var(str_replace('*', 'count(*)', $email['query']));
+                                ?>
                                 <p class="description">
-                                <?php _e('Save to update if on targeting filters have been changed', 'newsletter') ?>
+                                    <?php _e('Save to update if on targeting filters have been changed', 'newsletter') ?>
                                 </p>
                             </td>
                         </tr>
@@ -425,9 +407,9 @@ echo $wpdb->get_var(str_replace('*', 'count(*)', $email['query']));
                         <tr valign="top">
                             <th><?php _e('Keep private', 'newsletter') ?></th>
                             <td>
-<?php $controls->yesno('private'); ?>
+                                <?php $controls->yesno('private'); ?>
                                 <p class="description">
-                                <?php _e('Hide/show from public sent newsletter list.', 'newsletter') ?>
+                                    <?php _e('Hide/show from public sent newsletter list.', 'newsletter') ?>
                                     <?php _e('Required', 'newsletter') ?>: <a href="" target="_blank">Newsletter Archive Extension</a>
                                 </p>
                             </td>
@@ -435,22 +417,22 @@ echo $wpdb->get_var(str_replace('*', 'count(*)', $email['query']));
                         <tr valign="top">
                             <th><?php _e('Track clicks and message opening', 'newsletter') ?></th>
                             <td>
-<?php $controls->yesno('track'); ?>
+                                <?php $controls->yesno('track'); ?>
                             </td>
                         </tr>
                         <tr valign="top">
                             <th><?php _e('Send on', 'newsletter') ?></th>
                             <td>
-<?php $controls->datetime('send_on'); ?> (now: <?php echo date_i18n(get_option('date_format') . ' ' . get_option('time_format')); ?>)
+                                <?php $controls->datetime('send_on'); ?> (now: <?php echo date_i18n(get_option('date_format') . ' ' . get_option('time_format')); ?>)
                                 <p class="description">
                                     If the current date and time are wrong, check your timezone on the General WordPress settings.
                                 </p>
                             </td>
                         </tr>
                     </table>
-                    
+
                     <?php do_action('newsletter_emails_edit_other', $module->get_email($email_id), $controls) ?>
-                    
+
                 </div>
                 <div id="tabs-status">
                     <table class="form-table">
@@ -467,9 +449,9 @@ echo $wpdb->get_var(str_replace('*', 'count(*)', $email['query']));
                             <td><?php echo esc_html($email['query']) ?></td>
                         </tr>
                         <tr valign="top">
-                        <th>Token (tech)</th>
-                        <td><?php echo esc_html($email['token']) ?></td>
-                    </tr>
+                            <th>Token (tech)</th>
+                            <td><?php echo esc_html($email['token']) ?></td>
+                        </tr>
                     </table>
                 </div>
 
@@ -500,7 +482,7 @@ echo $wpdb->get_var(str_replace('*', 'count(*)', $email['query']));
         </form>
     </div>
 
-<?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
+    <?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
 
 </div>
 

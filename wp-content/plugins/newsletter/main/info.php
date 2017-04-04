@@ -25,10 +25,10 @@ if (!$controls->is_action()) {
         <h2><?php _e('Company Info', 'newsletter') ?></h2>
         <p>
             These informations are used by Newsletter themes to automatically generate some sections of regular newsletters,
-            <a href="http://www.thenewsletterplugin.com/feed-by-mail-extension?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-feed" target="_blank">
+            <a href="https://www.thenewsletterplugin.com/feed-by-mail-extension?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-feed" target="_blank">
                 auto messages
             </a> and 
-            <a href="http://www.thenewsletterplugin.com/plugins/newsletter/follow-up-module?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-followup" target="_blank">
+            <a href="https://www.thenewsletterplugin.com/plugins/newsletter/follow-up-module?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-followup" target="_blank">
                 follow-up mails
             </a>. 
             Themes may not use all these fields and/or have specific alternate configurations. All fields are <strong>optional</strong>.

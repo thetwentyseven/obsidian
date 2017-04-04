@@ -64,14 +64,14 @@ if (!$controls->is_action()) {
 }
 
 if (!empty($controls->data['contract_key'])) {
-    $response = wp_remote_get('http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/check.php?k=' . $controls->data['contract_key']);
+    $response = wp_remote_get('https://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/check.php?k=' . $controls->data['contract_key']);
     if (is_wp_error($response)) {
         /* @var $response WP_Error */
         $controls->errors .= 'It seems that your blog cannot contact the license validator. Ask your provider to unlock the HTTP/HTTPS connections to www.thenewsletterplugin.com<br>';
         $controls->errors .= $response->get_error_code() . ' - ' . $response->get_error_message();
         $controls->data['licence_expires'] = "";
     } else if ($response['response']['code'] != 200) {
-        $controls->errors .= 'The license seems expired or not valid, please check your <a href="http://www.thenewsletterplugin.com/account">license code and status</a>, thank you.';
+        $controls->errors .= 'The license seems expired or not valid, please check your <a href="https://www.thenewsletterplugin.com/account">license code and status</a>, thank you.';
         $controls->data['licence_expires'] = "";
     } elseif ($expires = json_decode(wp_remote_retrieve_body($response))) {
         $controls->data['licence_expires'] = $expires->expire;
@@ -124,7 +124,7 @@ if (!empty($return_path)) {
 
                     <p>
                         <strong>Important!</strong>
-                        <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration" target="_blank">Read the configuration page</a>
+                        <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration" target="_blank">Read the configuration page</a>
                         to know every details about these settings.
                     </p>
 
@@ -140,7 +140,7 @@ if (!empty($return_path)) {
                                     <?php _e('Email address from which subscribers will see your email coming.', 'newsletter') ?> 
                                     Since this setting can
                                     affect the reliability of delivery,
-                                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#sender" target="_blank">read my notes here</a> (important).
+                                    <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#sender" target="_blank">read my notes here</a> (important).
                                     Generally use an address within your domain name.
                                 </p>
                             </td>
@@ -153,7 +153,7 @@ if (!empty($return_path)) {
                                 <p class="description">
                                     <?php _e('Name from which subscribers will see your email coming (for example your blog title).', 'newsletter') ?> 
                                     Since this setting can affect the reliability of delivery (usually under Windows)
-                                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#sender" target="_blank">read my notes here</a>.
+                                    <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#sender" target="_blank">read my notes here</a>.
                                 </p>
                             </td>
                         </tr>
@@ -165,7 +165,7 @@ if (!empty($return_path)) {
                                 <p class="description">
                                     Email address where delivery error messages are sent by mailing systems (eg. mailbox full, invalid address, ...).<br>
                                     Some providers do not accept this field: they can block emails or force it to a different value affecting the delivery reliability.
-                                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#return-path" target="_blank">Read my notes here</a> (important).
+                                    <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#return-path" target="_blank">Read my notes here</a> (important).
                                 </p>
                             </td>
                         </tr>
@@ -177,7 +177,7 @@ if (!empty($return_path)) {
                                     This is the email address where subscribers will reply (eg. if they want to reply to a newsletter). Leave it blank if
                                     you don't want to specify a different address from the sender email above. Since this setting can
                                     affect the reliability of delivery,
-                                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#reply-to" target="_blank">read my notes here</a> (important).
+                                    <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#reply-to" target="_blank">read my notes here</a> (important).
                                 </p>
                             </td>
                         </tr>
@@ -187,7 +187,7 @@ if (!empty($return_path)) {
                             <td>
                                 <?php $controls->text('contract_key', 40); ?>
                                 <p class="description">
-                                    This key is used by <a href="http://www.thenewsletterplugin.com/plugins/newsletter" target="_blank">extensions</a> to
+                                    This key is used by <a href="https://www.thenewsletterplugin.com/plugins/newsletter" target="_blank">extensions</a> to
                                     self update. It does not unlock hidden features or like!
                                     <?php if (defined('NEWSLETTER_LICENSE_KEY')) { ?>
                                         <br>A global license key is actually defined, this value will be ignored.
@@ -209,7 +209,7 @@ if (!empty($return_path)) {
                     </p>
                     <p>
                         <strong>Important!</strong> Read the
-                        <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-delivery-engine" target="_blank">delivery engine page</a>
+                        <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-delivery-engine" target="_blank">delivery engine page</a>
                         to solve speed problems and find blog setup examples to make it work at the best.
                     </p>
 
@@ -221,7 +221,7 @@ if (!empty($return_path)) {
                                 <p class="description">
                                     The Newsletter delivery engine respects this limit and it should be set to a value less than the maximum allowed by your provider
                                     (Hostgator: 500 per hour, Dreamhost: 100 per hour, Go Daddy: 1000 per <strong>day</strong> using their SMTP, Gmail: 500 per day).
-                                    Read <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-delivery-engine" target="_blank">more on delivery engine</a> (important).
+                                    Read <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-delivery-engine" target="_blank">more on delivery engine</a> (important).
                                 </p>
                             </td>
                         </tr>
@@ -232,7 +232,7 @@ if (!empty($return_path)) {
                 <div id="tabs-advanced">
 
                     <p>
-                        Every setting is explained <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#advanced" target="_blank">here</a>.
+                        Every setting is explained <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#advanced" target="_blank">here</a>.
                     </p>
 
                     <table class="form-table">
@@ -292,7 +292,7 @@ if (!empty($return_path)) {
                                     This enable the textual part of newsletters and the content encoding setting. 
                                     Keep at "No" if you're using
                                     ans SMTP plugin like Postman. 
-                                    <a href=" http://www.thenewsletterplugin.com/configuration-tnin-send-email" target="_blank">Read more</a>.
+                                    <a href=" https://www.thenewsletterplugin.com/configuration-tnin-send-email" target="_blank">Read more</a>.
                                 </p>
                             </td>
                         </tr>
@@ -302,7 +302,7 @@ if (!empty($return_path)) {
                                 <?php $controls->select('content_transfer_encoding', array('' => 'Default', '8bit' => '8 bit', 'base64' => 'Base 64', 'binary' => 'Binary', 'quoted-printable' => 'Quoted printable', '7bit' => '7 bit')); ?>
                                 <p class="description">
                                     Sometimes setting it to Base 64 solves problem with old mail servers (for example truncated or unformatted emails.
-                                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#enconding" target="_blank">Read more here</a>.
+                                    <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#enconding" target="_blank">Read more here</a>.
                                     Works only with direct email sending, see the option above.
                                 </p>
                             </td>
@@ -311,7 +311,7 @@ if (!empty($return_path)) {
                             <th>PHP max execution time</th>
                             <td>
                                 <?php $controls->text('php_time_limit', 10); ?>
-                                (before write in something, <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#advanced" target="_blank">read here</a>)
+                                (before write in something, <a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#advanced" target="_blank">read here</a>)
                                 <p class="description">
                                     Sets the PHP max execution time in seconds, overriding the default of your server.
                                 </p>

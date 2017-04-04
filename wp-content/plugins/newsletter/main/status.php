@@ -59,7 +59,7 @@ if ($controls->is_action('test')) {
 
         // Newsletter mail 
         $text = array();
-        $text['html'] = '<p>This is an <b>HTML</b> test email sent using the sender data set on Newsletter main setting. <a href="http://www.thenewsletterplugin.com">This is a link to an external site</a>.</p>';
+        $text['html'] = '<p>This is an <b>HTML</b> test email sent using the sender data set on Newsletter main setting. <a href="https://www.thenewsletterplugin.com">This is a link to an external site</a>.</p>';
         $text['text'] = 'This is a textual test email part sent using the sender data set on Newsletter main setting.';
         $r = $module->mail($controls->data['test_email'], 'Newsletter test email at ' . date(DATE_ISO8601), $text);
 
@@ -140,7 +140,7 @@ $options = $module->get_options('status');
                 </thead>
 
                 <tbody>
-                    
+
                     <tr>
                         <td>Mailing</td>
                         <td>
@@ -205,7 +205,7 @@ $options = $module->get_options('status');
                         </td>
 
                     </tr>
-                    
+
                     <tr>
                         <td>Blog Charset</td>
                         <td>
@@ -251,6 +251,7 @@ $options = $module->get_options('status');
 
                     <?php
                     $value = (int) ini_get('max_execution_time');
+                    $res = true;
                     if ($value != 0 && $value < NEWSLETTER_CRON_INTERVAL) {
                         $res = set_time_limit(NEWSLETTER_CRON_INTERVAL * 1.2);
                     }
@@ -416,10 +417,10 @@ $options = $module->get_options('status');
                         <td>
                             <?php if ($time === false) { ?>
                                 No next execution is planned.
-                                <?php $controls->button('reschedule', 'Reset')?>
+                                <?php $controls->button('reschedule', 'Reset') ?>
                             <?php } else if ($delta <= -600) { ?>
-                                The scheduler is very late: <?php echo $delta ?> seconds (<a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-delivery-engine" target="_blank">read more</a>)
-                                <?php } else { ?>
+                                The scheduler is very late: <?php echo $delta ?> seconds (<a href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-delivery-engine" target="_blank">read more</a>)
+                            <?php } else { ?>
                                 Next execution is planned in <?php echo $delta ?> seconds (negative values are ok).
                             <?php } ?>
                         </td>
@@ -559,7 +560,7 @@ $options = $module->get_options('status');
 
                     <?php
                     $res = true;
-                    $response = wp_remote_get('http://www.thenewsletterplugin.com/wp-content/versions/all.txt');
+                    $response = wp_remote_get('https://www.thenewsletterplugin.com/wp-content/versions/all.txt');
                     if (is_wp_error($response)) {
                         $res = false;
                         $message = $reponse->get_error_message();
@@ -737,7 +738,7 @@ $options = $module->get_options('status');
                             <?php echo NEWSLETTER_VERSION ?>
                         </td>
                     </tr>
-                    
+
                     <tr>
                         <td>NEWSLETTER_MAX_EXECUTION_TIME</td>
                         <td>

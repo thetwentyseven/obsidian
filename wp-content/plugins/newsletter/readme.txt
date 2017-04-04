@@ -1,8 +1,8 @@
 === Newsletter ===
 Tags: newsletter,email,subscription,mass mail,list build,email marketing,direct mailing,automation,automated
 Requires at least: 3.4.0
-Tested up to: 4.7.2
-Stable tag: 4.8.3
+Tested up to: 4.7.3
+Stable tag: 4.8.7
 Contributors: satollo,webagile,michael-travan
 
 Add a real newsletter system to your blog. For free. With unlimited newsletters and subscribers.
@@ -39,18 +39,18 @@ send and track e-mails, headache-free. It just works out of box!
 Need *more power*? Feel *something's missing*? The Newsletter Plugin features can be easily extended through 
 our **premium, professional Extensions**! Let us introduce just two of them : )
 
-* [Reports Extension](http://www.thenewsletterplugin.com/plugins/newsletter/reports-module) is a regular WordPress plugin which improves the internal statistics collection system and provides better reports of data collected for each sent email. Neat.
-* [Feed By Mail Extension](http://www.thenewsletterplugin.com/feed-by-mail-extension) generates and sends your newsletters using your blog last posts, even custom ones like events or products. Just sit and watch!
-* [WooCommerce Extension](http://www.thenewsletterplugin.com/woocommerce-extension) subscribe customers to a mailing list and generate product newletters.
-* [Amazon SES Extension](http://www.thenewsletterplugin.com/amazon-ses-extension-for-the-newsletter-plugin) seamlessly integrate Amazon SES with The Newsletter Plugin. Hassle-free.
+* [Reports Extension](https://www.thenewsletterplugin.com/plugins/newsletter/reports-module) is a regular WordPress plugin which improves the internal statistics collection system and provides better reports of data collected for each sent email. Neat.
+* [Feed By Mail Extension](https://www.thenewsletterplugin.com/feed-by-mail-extension) generates and sends your newsletters using your blog last posts, even custom ones like events or products. Just sit and watch!
+* [WooCommerce Extension](https://www.thenewsletterplugin.com/woocommerce-extension) subscribe customers to a mailing list and generate product newletters.
+* [Amazon SES Extension](https://www.thenewsletterplugin.com/amazon-ses-extension-for-the-newsletter-plugin) seamlessly integrate Amazon SES with The Newsletter Plugin. Hassle-free.
 
 = Support =
 
-We provide support for our plugin on [Wordpress.org forums](https://wordpress.org/support/plugin/newsletter) and through our official [forum here](http://www.thenewsletterplugin.com/forums), but only Premium Users with an active license have access to one-to-one support via our [ticketing system](http://www.thenewsletterplugin.com/support-ticket). 
+We provide support for our plugin on [Wordpress.org forums](https://wordpress.org/support/plugin/newsletter) and through our official [forum here](https://www.thenewsletterplugin.com/forums), but only Premium Users with an active license have access to one-to-one support via our [ticketing system](https://www.thenewsletterplugin.com/support-ticket). 
 
 = Follow Us =
 
-* **Our Official Website** - http://www.thenewsletterplugin.com/ 
+* **Our Official Website** - https://www.thenewsletterplugin.com/ 
 * **Our Facebook Page** - https://www.facebook.com/thenewsletterplugin 
 * **Our Twitter Account** - https://twitter.com/newsletterwp 
 
@@ -62,10 +62,10 @@ We provide support for our plugin on [Wordpress.org forums](https://wordpress.or
 
 == Frequently Asked Questions ==
 
-See the [Newsletter FAQ](http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-faq) or the
-[Newsletter Forum](http://www.thenewsletterplugin.com/forums) to ask for help.
+See the [Newsletter FAQ](https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-faq) or the
+[Newsletter Forum](https://www.thenewsletterplugin.com/forums) to ask for help.
 
-For documentation start from [Newsletter documentation](http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation).
+For documentation start from [Newsletter documentation](https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation).
 
 Thank you, The Newsletter Team
 
@@ -76,6 +76,35 @@ Thank you, The Newsletter Team
 3. The Reports extension
 
 == Changelog ==
+
+= 4.8.7 =
+
+* Empty excerpt fix
+* Fixed the list of blocks not appearing on few PHP installations
+* Fixed the composer editor
+
+= 4.8.6 =
+
+* Warnings on SMTP panel when configured but not yet activated
+* Warning management in controls
+* Font family selector in the editor
+* Font size selector in the editor
+* Removed embedded tiny
+* Removed embedded ace
+* HTTPS on external links
+* Fixed tag replacement on subject on test confirmation and welcome emails
+
+= 4.8.5 =
+
+* Added HTML editor plugin to tiny
+* Fixed a couple of debug notices on widget
+
+= 4.8.4 =
+
+* Fixed posts block background editing
+* Composer js improvements
+* Fixed a couple of debug notices
+* CSS fix
 
 = 4.8.3 =
 
@@ -246,7 +275,7 @@ Thank you, The Newsletter Team
 
 = 4.5.0 =
 
-* New responsive email Drag & Drop composer, see [the guide](http://www.thenewsletterplugin.com/plugins/newsletter/composer).
+* New responsive email Drag & Drop composer, see [the guide](https://www.thenewsletterplugin.com/plugins/newsletter/composer).
 
 = 4.2.4 =
 
@@ -423,7 +452,7 @@ Thank you, The Newsletter Team
 
 * Changed the widget constructor
 * Fixed the newsletter_form shortcode
-* Added shortcodes for in page form building (beta): see the [plugin documentation](http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation).
+* Added shortcodes for in page form building (beta): see the [plugin documentation](https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation).
 
 = 3.8.4 =
 

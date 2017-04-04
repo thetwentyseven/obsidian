@@ -26,12 +26,6 @@ $status = array(0 => 'Disabled/Private use', 1 => 'Only on profile page', 2 => '
 
         <h2><?php _e('Lists', 'newsletter') ?></h2>
 
-        <p>
-            Preferences are on/off choices users can select during subscription and change on their profile.
-            Those preferences are then used by you to target emails you create. Private preferenced can be used
-            to create group/list since the subscriber cannot change them.
-        </p>
-
     </div>
 
     <div id="tnp-body">

@@ -1472,3 +1472,14 @@ if (!defined('ABSPATH')) exit;
         </div>
     </div>
 </div>
+
+<div class="tnpc-edit" id="tnpc-block-options">
+    <div class="tnpc-edit-box">
+        <form id="tnpc-block-options-form">
+        </form>
+        <div class="tnpc-edit-box-buttons">
+            <div class="tnpc-edit-box-buttons-save"><?php _e("Save", "newsletter") ?></div>
+            <div class="tnpc-edit-box-buttons-cancel"><?php _e("Cancel", "newsletter") ?></div>
+        </div>
+    </div>
+</div>

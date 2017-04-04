@@ -10,8 +10,9 @@ wp_enqueue_style('wp-color-picker');
 wp_enqueue_script('wp-color-picker');
 
 // TNP Composer style
-wp_enqueue_style('tnpc-style', plugins_url('/tnp-composer/_css/newsletter-builder.css', __FILE__));
-wp_enqueue_style('tnpc-newsletter-style', plugins_url('/tnp-composer/css/newsletter.css', __FILE__));
+wp_enqueue_style('tnpc-style', plugins_url('/tnp-composer/_css/newsletter-builder.css', __FILE__), array(), time());
+//wp_enqueue_style('tnpc-newsletter-style', plugins_url('/tnp-composer/css/newsletter.css', __FILE__));
+wp_enqueue_style('tnpc-newsletter-style', home_url('/') . '?na=emails-composer-css');
 
 if (($controls->is_action('save') || $controls->is_action('preview')) && !$_GET['id']) {
 
@@ -83,14 +84,14 @@ if (isset($email)) {
 
 <div class="wrap" id="tnp-wrap">
 
-    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/newsletters-module'; ?>
+    <?php $help_url = 'https://www.thenewsletterplugin.com/plugins/newsletter/newsletters-module'; ?>
     <?php //include NEWSLETTER_DIR . '/tnp-header.php';  ?>
 
     <div id="tnp-heading" class="tnp-composer-heading">
 
-        <img src="http://cdn.thenewsletterplugin.com/tests/tnp-composer-heading.png">
+        <img src="https://cdn.thenewsletterplugin.com/tests/tnp-composer-heading.png">
         <h2><?php _e('Compose a newsletter', 'newsletter') ?></h2>
-        <a href="http://www.thenewsletterplugin.com/plugins/newsletter/composer" target="_blank"><i class="fa fa-life-ring"></i> <?php _e('Read the guide', 'newsletter') ?></a>
+        <a href="https://www.thenewsletterplugin.com/plugins/newsletter/composer" target="_blank"><i class="fa fa-life-ring"></i> <?php _e('Read the guide', 'newsletter') ?></a>
         <form method="post" action="" id="tnpc-form">
             <?php $controls->init(); ?>
             <?php $controls->hidden('subject'); ?>
@@ -101,12 +102,9 @@ if (isset($email)) {
         </form>
     </div>
 
-    <div id="tnp-body" class="tnp-body-lite"> 
+
 
         <?php include NEWSLETTER_DIR . '/emails/tnp-composer/index.php'; ?>
 
-    </div>
-
-    <?php //include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
 
 </div>

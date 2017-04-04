@@ -55,7 +55,7 @@ $themes = $module->themes->get_all_with_data();
     <div id="tnp-heading">
 
         <h2><?php _e('Select a theme', 'newsletter') ?>
-            <a class="tnp-btn-h1" href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-themes" target="_blank">Custom themes</a>
+            <a class="tnp-btn-h1" href="https://www.thenewsletterplugin.com/plugins/newsletter/newsletter-themes" target="_blank">Custom themes</a>
         </h2>
 
     </div>

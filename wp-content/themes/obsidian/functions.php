@@ -10,6 +10,7 @@ function bootstrapstarter_enqueue_styles() {
 function bootstrapstarter_enqueue_scripts() {
     wp_enqueue_script('obsidian-bootstrap-js', get_template_directory_uri().'/bootstrap/js/bootstrap.min.js', '3.3.6', false );
     wp_enqueue_script('obsidian-animate-js', get_template_directory_uri().'/animate/animate.js', '1.0.0', false );
+    wp_enqueue_script( 'twitterFetcher', get_template_directory_uri() . '/js/twitterFetcher.js', array(), '6.0.3', true );
 }
 
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles' );

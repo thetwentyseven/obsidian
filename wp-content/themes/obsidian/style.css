@@ -37,6 +37,12 @@ body{
   background-size:cover;
 }
 
+ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
 a {color: #e30613;}
 a:hover {color: #cc6c72;}
 

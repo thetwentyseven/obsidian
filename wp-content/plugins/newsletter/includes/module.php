@@ -1,5 +1,7 @@
 <?php
-if (!defined('ABSPATH')) exit;
+
+if (!defined('ABSPATH'))
+    exit;
 
 class NewsletterModule {
 
@@ -62,7 +64,7 @@ class NewsletterModule {
 
             if ($this->old_version == '0.0.0') {
                 $this->first_install();
-                update_option($this->prefix."_first_install_time", time(), FALSE);
+                update_option($this->prefix . "_first_install_time", time(), FALSE);
             }
 
             if (strcmp($this->old_version, $this->version) != 0) {
@@ -590,7 +592,7 @@ class NewsletterModule {
     }
 
     function get_email($id, $format = OBJECT) {
-        return $this->store->get_single(NEWSLETTER_EMAILS_TABLE, $id, $format);
+        return $this->store->get_single(NEWSLETTER_EMAILS_TABLE, (int)$id, $format);
     }
 
     function get_email_status_label($email) {
@@ -703,6 +705,16 @@ class NewsletterModule {
         return $r;
     }
 
+    function get_list($id) {
+        global $wpdb;
+        $id = (int) $id;
+        $list = get_option('newsletter_list_' . $id, array());
+        $profile = get_option('newsletter_profile');
+        $list['name'] = $profile['list_' . $id];
+        $list['subscriber_count'] = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='C' and list_" . $id . "=1");
+        return $list;
+    }
+
     /**
      * NEVER CHANGE THIS METHOD SIGNATURE, USER BY THIRD PARTY PLUGINS.
      *
@@ -731,6 +743,31 @@ class NewsletterModule {
         return $this->store->save(NEWSLETTER_USERS_TABLE, $user, $return_format);
     }
 
+    function inline_css($content, $strip_style_blocks = false) {
+        // CSS
+        $matches = array();
+        // "s" skips line breaks
+        $styles = preg_match('|<style>(.*?)</style>|s', $content, $matches);
+        if ($matches[1]) {
+            $style = str_replace(array("\n", "\r"), '', $matches[1]);
+            $rules = array();
+            preg_match_all('|\s*\.(.*?)\{(.*?)\}\s*|s', $style, $rules);
+            //print_r($rules);
+            for ($i = 0; $i < count($rules[1]); $i++) {
+                $class = trim($rules[1][$i]);
+                $value = trim($rules[2][$i]);
+                $value = preg_replace('|\s+|', ' ', $value);
+                $content = str_replace('class="' . $class . '"', 'class="' . $class . '" style="' . $value . '"', $content);
+            }
+        }
+
+        if ($strip_style_blocks) {
+            return trim(preg_replace('|<style>.*?</style>|s', '', $content));
+        } else {
+            return $content;
+        }
+    }
+
     function set_user_wp_user_id($user_id, $wp_user_id) {
         $this->store->set_field(NEWSLETTER_USERS_TABLE, $user_id, 'wp_user_id', $wp_user_id);
     }
@@ -751,7 +788,8 @@ class NewsletterModule {
         echo '<html><head></head><body>';
         echo '<form method="post" action="' . home_url('/') . '" id="form">';
         foreach ($_REQUEST as $name => $value) {
-            if ($name == 'submit') continue;
+            if ($name == 'submit')
+                continue;
             if (is_array($value)) {
                 foreach ($value as $element) {
                     echo '<input type="hidden" name="';
@@ -779,6 +817,17 @@ class NewsletterModule {
         echo '<script>document.getElementById("form").submit();</script>';
         echo '</body></html>';
         die();
+    }
+
+    static function extract_body($html) {
+        $x = stripos($html, '<body');
+        if ($x !== false) {
+            $x = strpos($html, '>', $x);
+            $y = strpos($html, '</body>');
+            return substr($html, $x + 1, $y - $x - 1);
+        } else {
+            return $html;
+        }
     }
 
 }

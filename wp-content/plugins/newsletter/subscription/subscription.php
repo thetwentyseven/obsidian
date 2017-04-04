@@ -118,7 +118,9 @@ class NewsletterSubscription extends NewsletterModule {
                     $key = 'confirmation';
                 $module = NewsletterSubscription::instance();
                 $message = $newsletter->replace($module->options[$key . '_text'], $user);
-                $message .= $module->options[$key . '_tracking'];
+                if (isset($module->options[$key . '_tracking'])) {
+                    $message .= $module->options[$key . '_tracking'];
+                }
                 echo $message;
                 die();
 
@@ -311,6 +313,14 @@ class NewsletterSubscription extends NewsletterModule {
         $options_profile = get_option('newsletter_profile', array());
 
         $opt_in = (int) $this->options['noconfirmation']; // 0 - double, 1 - single
+        if (isset($_REQUEST['optin'])) {
+            switch ($_REQUEST['optin']) {
+                case 'single': $opt_in = 1;
+                    break;
+                case 'double': $opt_in = 0;
+                    break;
+            }
+        }
 
         $email = $newsletter->normalize_email(stripslashes($_REQUEST['ne']));
 
@@ -625,6 +635,7 @@ class NewsletterSubscription extends NewsletterModule {
 
         if ($user->status == 'C') {
             $newsletter->set_user_status($user->id, 'U');
+            do_action('newsletter_unsubscribed', $user);
 
             global $wpdb;
             if (isset($_REQUEST['nek'])) {
@@ -890,13 +901,7 @@ class NewsletterSubscription extends NewsletterModule {
             $attrs = array();
         }
 
-        $attrs = array_merge(array('class' => 'newsletter', 'default_css' => 'true', 'style' => ''), $attrs);
-
-        if (isset($attrs['default_css']) && $attrs['default_css'] == 'true') {
-            echo '<style scoped>';
-            include dirname(__FILE__) . '/styles/shortcode/default.css';
-            echo '</style>';
-        }
+        $attrs = array_merge(array('class' => 'newsletter', 'style' => ''), $attrs);
 
         $options_profile = get_option('newsletter_profile');
         $action = esc_attr(home_url('/') . '?na=s');

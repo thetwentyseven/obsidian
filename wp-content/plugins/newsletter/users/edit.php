@@ -163,7 +163,7 @@ function percentValue($value, $total) {
                             <?php $controls->yesno('feed'); ?>
                             <p class="description">
                                 "Yes" when this subscriber has the feed by mail service active. The 
-                                <a href="http://www.thenewsletterplugin.com/feed-by-mail-extension?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-feed" target="_blank">feed by mail is an extension of this plugin</a>.
+                                <a href="https://www.thenewsletterplugin.com/feed-by-mail-extension?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-feed" target="_blank">feed by mail is an extension of this plugin</a>.
                             </p>
                         </td>
                     </tr>
@@ -269,7 +269,7 @@ function percentValue($value, $total) {
                 <p>Newsletter sent to this subscriber.</p>
                 <?php if (!has_action('newsletter_user_newsletters_tab') && !has_action('newsletter_users_edit_newsletters')) { ?>
                 <div class="tnp-tab-notice">
-                    This panel requires the <a href="http://www.thenewsletterplugin.com/plugins/newsletter/reports-module" target="_blank">Reports Extension 4+</a>.
+                    This panel requires the <a href="https://www.thenewsletterplugin.com/plugins/newsletter/reports-module" target="_blank">Reports Extension 4+</a>.
                 </div>
                 <?php } else {
                     do_action('newsletter_user_newsletters_tab', $id);

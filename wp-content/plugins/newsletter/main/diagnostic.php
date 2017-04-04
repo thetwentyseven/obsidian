@@ -107,7 +107,7 @@ if ($controls->is_action('test')) {
 
         // Newsletter mail 
         $text = array();
-        $text['html'] = '<p>This is an <b>HTML</b> test email sent using the sender data set on Newsletter main setting. <a href="http://www.thenewsletterplugin.com">This is a link to an external site</a>.</p>';
+        $text['html'] = '<p>This is an <b>HTML</b> test email sent using the sender data set on Newsletter main setting. <a href="https://www.thenewsletterplugin.com">This is a link to an external site</a>.</p>';
         $text['text'] = 'This is a textual test email part sent using the sender data set on Newsletter main setting.';
         $r = $module->mail($controls->data['test_email'], 'Newsletter test email at ' . date(DATE_ISO8601), $text);
 

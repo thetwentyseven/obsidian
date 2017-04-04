@@ -99,6 +99,11 @@
 .col-md-offset-0 {margin-left: 0;}
 
 
+/* Global Fonts */
+
+/*#tnp-wrap {
+    font-family: "Open Sans", sans-serif;
+}*/
 
 
 /* HEADER *********************************************************************/
@@ -522,7 +527,8 @@ table.clicks {
     border: 1px sold #eee;
     background-color: #fff;
     color: #444;
-    font-size: 15px;
+    font-size: 13px;
+    border-left: 5px solid #27AE60;
 }
 
 .tnp-notice a {
@@ -540,6 +546,28 @@ table.clicks {
     text-decoration: none;
     color: #666;
 }
+
+.tnp-notice input[type=email] {
+    margin: 10px 5px 5px;
+    width: 250px;
+    border: none;
+    box-shadow: none;
+    background-color: #ECF0F1;
+    padding: 8px;
+}
+
+.tnp-notice input[type=submit] {
+    border: none;
+    box-shadow: none;
+    background-color: #27AE60;
+    padding: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
 
 .newsletter-message {
     background-color: #efe;
@@ -1466,8 +1494,96 @@ table.widefat {
     padding: 5px 8px;
     text-decoration: none;
     cursor: pointer;
+    position: relative;
+}
+
+img.tnp-extensions-free-badge {
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 0;
+    width: 70px;
 }
 
 .tnp-extensions-image img {
     margin: 25px 0px -10px;
+}
+
+/* Subscription modal for free extensions */
+#tnp-subscribe-overlay {
+    height: 100vh;
+    width: 100vw;
+    z-index: 10000;
+    display: none;
+    background-image: url(images/modal-background.png);
+    background-repeat: repeat;
+    position: fixed;
+    top: 0;
+    left: -20px;
+}
+
+#tnp-subscribe-modal {
+    width: 600px;
+    background-color: rgba(255,255,255,1);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 100px;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+    padding: 25px;
+    background-color: #1D2B38;
+
+    text-align: center;
+}
+
+#tnp-subscribe-modal img {
+    width: 30%;
+}
+
+#tnp-subscribe-title {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    line-height: 30px;
+    color: white;
+    font-weight: 200;
+}
+
+#tnp-subscribe-email-wrapper {
+    margin: 20px;
+}
+
+#tnp-subscribe-email-wrapper input {
+    border: none;
+    background-color: #223242;
+    color: white;
+}
+
+#tnp-subscribe-email {
+    font-size: 24px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+#tnp-subscribe-submit-wrapper {
+    margin-bottom: 20px;
+}
+
+#tnp-subscribe-submit {
+    font-size: 24px;
+    background-color: #219050;
+    color: #fff;
+    padding: 10px 35px;
+    border: 0;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
+
+#tnp-subscribe-no-thanks {
+    color: #666;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

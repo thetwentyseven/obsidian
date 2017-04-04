@@ -87,19 +87,19 @@ if ($controls->is_action()) {
 
         $users = NewsletterUsers::instance()->get_test_users();
         if (count($users) == 0) {
-            $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+            $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
         } else {
             $addresses = array();
             foreach ($users as &$user) {
                 $addresses[] = $user->email;
-                $res = $module->mail($user->email, $module->options['confirmation_subject'], $newsletter->replace($module->options['confirmation_message'], $user));
+                $res = $module->mail($user->email, $newsletter->replace($module->options['confirmation_subject']), $newsletter->replace($module->options['confirmation_message'], $user));
                 if (!$res) {
                     $controls->errors = 'The email address ' . $user->email . ' failed.';
                     break;
                 }
             }
             $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers: ' .
-                    implode(', ', $addresses) . '. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+                    implode(', ', $addresses) . '. Read more about test subscribers <a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
             $controls->messages .= '<br>If the message is not received, try to change the message text it could trigger some antispam filters.';
         }
     }
@@ -108,19 +108,19 @@ if ($controls->is_action()) {
 
         $users = NewsletterUsers::instance()->get_test_users();
         if (count($users) == 0) {
-            $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+            $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
         } else {
             $addresses = array();
             foreach ($users as &$user) {
                 $addresses[] = $user->email;
-                $res = $module->mail($user->email, $module->options['confirmed_subject'], $newsletter->replace($module->options['confirmed_message'], $user));
+                $res = $module->mail($user->email, $newsletter->replace($module->options['confirmed_subject']), $newsletter->replace($module->options['confirmed_message'], $user));
                 if (!$res) {
                     $controls->errors = 'The email address ' . $user->email . ' failed.';
                     break;
                 }
             }
             $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers: ' .
-                    implode(', ', $addresses) . '. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+                    implode(', ', $addresses) . '. Read more about test subscribers <a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
             $controls->messages .= '<br>If the message is not received, try to change the message text it could trigger some antispam filters.';
         }
     }
@@ -136,7 +136,7 @@ if (empty($controls->data['page'])) {
     if (!$post || $post->post_status != 'publish') {
         $controls->errors .= '<p>The dedicated page selected below does not exist anymore or has been unpublished. Please, select a different one.</p>';
     } else {
-        if (strpos($post->post_content, '[newsletter]') === false) {
+        if (strpos($post->post_content, '[newsletter') === false) {
             $controls->errors .= '<p>The dedicated page selected DOES NOT contain the [newsletter] shortcode. Please fix it. It should contain ONLY the [newsletter] shortcode.</p>';
         }
     }
@@ -297,7 +297,7 @@ if (empty($controls->data['page'])) {
                                 <p class="description">
                                     Shown when the email is already subscribed and confirmed. The welcome email, if not disabled, will
                                     be sent. Find out more on this topic on its
-                                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#repeated" target="_blank">documentation page</a>.
+                                    <a href="https://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#repeated" target="_blank">documentation page</a>.
                                 </p>
                             </td>
                         </tr>
@@ -449,7 +449,7 @@ if (empty($controls->data['page'])) {
                             <td>
                                 <?php $controls->wp_editor('profile_text'); ?>
                                 <p class="description">
-                                    This is the page where subscribers can edit their data and it must contain the {profile_form} tag. <a href="'http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#profile" target="_blank">Read more</a>.
+                                    This is the page where subscribers can edit their data and it must contain the {profile_form} tag. <a href="'https://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#profile" target="_blank">Read more</a>.
                                 </p>
                             </td>
                         </tr>

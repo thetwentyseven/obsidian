@@ -75,22 +75,30 @@
       <hr class="featurette-divider">
       <!-- Three columns of text below the carousel -->
       <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="sub-heading">THIS WEEKEND</h2>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-lg-4">
-          <img class="img-thumbnail" src="wp-content/themes/obsidian/img/promotion/drum_and_bass.jpg" alt="Generic placeholder image" width="140" height="140">
-          <h2>Drum & Bass</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <h3>Drum &amp; Bass</h3>
+          <p class="day">Thursday</p>
+          <p class="date">27th April</p>
+          <img class="img-thumbnail" src="wp-content/themes/obsidian/img/promotion/drum_and_bass.jpg" alt="Generic placeholder image">
           <p><a class="btn btn-hero" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-thumbnail" src="wp-content/themes/obsidian/img/promotion/edm.jpg" alt="Generic placeholder image" width="140" height="140">
-          <h2>EDM</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+          <h3>EDM</h3>
+          <p class="day">Friday</p>
+          <p class="date">28th April</p>
+          <img class="img-thumbnail" src="wp-content/themes/obsidian/img/promotion/edm.jpg" alt="Generic placeholder image">
           <p><a class="btn btn-hero" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-thumbnail" src="wp-content/themes/obsidian/img/promotion/pop.jpg" alt="Generic placeholder image" width="140" height="140">
-          <h2>POP</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <h3>POP</h3>
+          <p class="day">Saturday</p>
+          <p class="date">29th April</p>
+          <img class="img-thumbnail" src="wp-content/themes/obsidian/img/promotion/pop.jpg" alt="Generic placeholder image">
           <p><a class="btn btn-hero" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
@@ -99,45 +107,27 @@
       <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      <!-- Team Members Row -->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="sub-heading">OUR RESIDENT DJS</h2>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center">
+                <p class="dj">DJ Jadey</p>
+                <img class="img-circle img-responsive img-center" src="wp-content/themes/obsidian/img/dj/dj1.jpg" alt="Image of resident DJ">
+                <p>DJ Jadey often works for BBC radio. He specializes in a pop music and charts. </p>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center">
+                <p class="dj">DJ Dimi T.</p>
+                <img class="img-circle img-responsive img-center" src="wp-content/themes/obsidian/img/dj/dj2.jpg" alt="Image of resident DJ">
+                <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center">
+                <p class="dj">MC Vic</p>
+                <img class="img-circle img-responsive img-center" src="wp-content/themes/obsidian/img/dj/dj3.jpg" alt="Image of resident DJ">
+                <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+            </div>
         </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block"
-          src="wp-content/themes/obsidian/img/slider/slider_4.jpg" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block"
-          src="wp-content/themes/obsidian/img/slider/slider_5.jpg" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block"
-          src="wp-content/themes/obsidian/img/slider/slider_7.jpg" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
       <!-- /END THE FEATURETTES -->
       </div><!-- /.container -->
         <?php

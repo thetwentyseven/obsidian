@@ -87,9 +87,9 @@ tnp-profile form .tnp-field label {
     font-size: 14px;
 }
 
-.tnp-profile form .tnp-field input[type=text], 
-.tnp-profile form .tnp-field input[type=email], 
-.tnp-profile form .tnp-field input[type=submit], 
+.tnp-profile form .tnp-field input[type=text],
+.tnp-profile form .tnp-field input[type=email],
+.tnp-profile form .tnp-field input[type=submit],
 .tnp-profile form .tnp-field select {
     padding: 10px;
     display: block;
@@ -179,7 +179,7 @@ tnp-profile form .tnp-field label {
 }
 
 .tnp-field label {
-    
+
 }
 
 /* Newsletter Widget Minimal */
@@ -201,7 +201,7 @@ tnp-profile form .tnp-field label {
     display: inline-block;
     border: 1px;
     border-color: #ddd;
-    background-color: #f4f4f4;
+    background-color: #222222;
     color: #444;
     font-size: 14px;
     box-sizing: border-box;
@@ -213,8 +213,8 @@ tnp-profile form .tnp-field label {
     padding: 10px;
     display: inline-block;
     border: 1px;
-    border-color: #ddd;
-    background-color: #444;
+    border-color: #e30613;
+    background-color: #e30613;
     color: #fff;
     font-size: 14px;
     line-height: normal;

@@ -42,26 +42,29 @@
 	  <div class="container">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-
-
-			<?php if ( get_theme_mod( 'obsidian_logo' ) ) : ?>
-			    <div class='site-logo'>
-			        <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'obsidian_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
-			    </div>
-			<?php else : ?>
-			    <hgroup>
-			        <h1 class='site-title'><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a></h1>
-			        <h2 class='site-description'><?php bloginfo( 'description' ); ?></h2>
-			    </hgroup>
-			<?php endif; ?>
-
-
+				<?php if ( get_theme_mod( 'obsidian_logo' ) ) : ?>
+				    <div class='site-logo'>
+				        <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'obsidian_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
+				    </div>
+				<?php else : ?>
+				    <hgroup>
+				        <h1 class='site-title'><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a></h1>
+				        <h2 class='site-description'><?php bloginfo( 'description' ); ?></h2>
+				    </hgroup>
+				<?php endif; ?>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 	    </div>
         <?php
             wp_nav_menu( array(
                 'menu'              => 'main-menu',
                 'theme_location'    => 'Main Menu',
-                'depth'             => 3,
+                'depth'             => 2,
                 'container'         => 'div',
                 'container_class'   => 'collapse navbar-collapse',
         				'container_id'      => 'bs-example-navbar-collapse-1',

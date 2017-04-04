@@ -189,6 +189,11 @@ ul#menu-all-pages {
   margin-bottom:0.5em;
   margin-top: 2.5em;
 }
+
+.img-thumbnail {
+  border-radius: 0px;
+}
+
 /* End Content */
 
 
@@ -254,6 +259,7 @@ ul#menu-all-pages {
     border-color: #e30613;
     outline: none;
     margin: 20px auto;
+    border-radius: 0px;
 }
 /* End Custom Buttons */
 
@@ -292,6 +298,7 @@ ul#menu-all-pages {
 .sub-heading {
   font-size:40px;
   padding-bottom:30px;
+  font-weight: bold;
 }
 
 .day{
@@ -310,6 +317,6 @@ ul#menu-all-pages {
     padding-bottom: 15px;
 }
 .dj {
-  font-size: 22px;
+  font-size: 28px;
   color:#e30613;
 }

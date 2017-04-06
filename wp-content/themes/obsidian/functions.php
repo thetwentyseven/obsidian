@@ -115,9 +115,6 @@ function obsidian_events_widgets_init() {
 add_action( 'widgets_init', 'obsidian_events_widgets_init' );
 
 
-
-
-
 function obsidian_shop_widgets_init() {
 
 	register_sidebar( array(

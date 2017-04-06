@@ -4,6 +4,7 @@ function bootstrapstarter_enqueue_styles() {
     wp_enqueue_style( 'obsidian-bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css' );
     wp_enqueue_style( 'obsidian-animate', get_template_directory_uri() . '/animate/animate.css' );
     wp_enqueue_style( 'obsidian-style', get_template_directory_uri() . '/style.css' );
+    wp_enqueue_style( 'obsidian-shop-style', get_template_directory_uri() . '/css/shop.css' );
 
 }
 
@@ -97,3 +98,17 @@ function obsidian_footer_widgets_init() {
 
 }
 add_action( 'widgets_init', 'obsidian_footer_widgets_init' );
+
+function obsidian_shop_widgets_init() {
+
+	register_sidebar( array(
+		'name'          => 'Shop right sidebar',
+		'id'            => 'shop_right_1',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="rounded">',
+		'after_title'   => '</h2>',
+	) );
+
+}
+add_action( 'widgets_init', 'obsidian_shop_widgets_init' );

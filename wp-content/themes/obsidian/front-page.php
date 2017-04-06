@@ -85,21 +85,21 @@
           <p class="day">Thursday</p>
           <p class="date">27th April</p>
           <img class="img-thumbnail" src="wp-content/themes/obsidian/img/promotion/drum_and_bass.jpg" alt="Generic placeholder image">
-          <a class="btn btn-hero" role="button" href="<?php echo esc_url( get_permalink( get_page_by_title( 'Drum & Bass' ) ) ); ?>">View details &raquo;</a>
+          <a class="btn btn-hero" role="button" href="<?php echo get_page_link(1787); ?>">View details &raquo;</a>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <h3><b>EDM</b></h3>
           <p class="day">Friday</p>
           <p class="date">28th April</p>
           <img class="img-thumbnail" src="wp-content/themes/obsidian/img/promotion/edm.jpg" alt="Generic placeholder image">
-          <a class="btn btn-hero" role="button" href="<?php echo esc_url( get_permalink( get_page_by_title( 'EDM' ) ) ); ?>">View details &raquo;</a>
+          <a class="btn btn-hero" role="button" href="<?php echo get_page_link(1789); ?>">View details &raquo;</a>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <h3><b>POP</b></h3>
           <p class="day">Saturday</p>
           <p class="date">29th April</p>
           <img class="img-thumbnail" src="wp-content/themes/obsidian/img/promotion/pop.jpg" alt="Generic placeholder image">
-          <a class="btn btn-hero" role="button" href="<?php echo esc_url( get_permalink( get_page_by_title( 'POP' ) ) ); ?>">View details &raquo;</a>
+          <a class="btn btn-hero" role="button" href="<?php echo get_page_link(1785); ?>">View details &raquo;</a>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 

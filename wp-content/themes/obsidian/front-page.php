@@ -8,6 +8,7 @@
             <!-- Example row of columns -->
              <div class="row">
               <div class="">
+
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                    <!-- Indicators -->
                    <ol class="carousel-indicators">
@@ -60,6 +61,7 @@
                      <span class="sr-only">Next</span>
                    </a>
                  </div>  <!-- end carousel -->
+
                </div> <!-- end column -->
 
          </div>  <!-- end row -->

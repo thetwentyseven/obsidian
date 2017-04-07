@@ -18,7 +18,6 @@ add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles' );
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_scripts' );
 
 
-//remove_filter( 'the_content', 'wpautop');
 
 // Register Custom Navigation Walker
 require_once('wp_bootstrap_navwalker.php');
@@ -37,6 +36,8 @@ function register_my_menus() {
    );
  }
  add_action( 'init', 'register_my_menus' );
+
+
 
 /**
  * Create a new custom post type of events.
@@ -82,7 +83,7 @@ add_action( 'customize_register', 'obsidian_theme_customizer' );
 
 
 /**
- * Register a widge areas.
+ * Register widget areas.
  *
  */
 function obsidian_footer_widgets_init() {

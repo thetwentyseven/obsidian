@@ -29,6 +29,7 @@ html, body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #fff;
+    font-smoothing: none;
 }
 
 body{
@@ -46,7 +47,9 @@ ul {
 }
 
 a {color: #e30613;}
-a:hover {color: #cc6c72;}
+a:hover {color: #e30613;}
+a:active {color: #e30613;}
+a:focus {color: #e30613;}
 
 .inline {
     margin-top: 0;

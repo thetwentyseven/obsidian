@@ -2,7 +2,7 @@
 Tags: newsletter,email,subscription,mass mail,list build,email marketing,direct mailing,automation,automated
 Requires at least: 3.4.0
 Tested up to: 4.7.3
-Stable tag: 4.8.7
+Stable tag: 4.8.9
 Contributors: satollo,webagile,michael-travan
 
 Add a real newsletter system to your blog. For free. With unlimited newsletters and subscribers.
@@ -26,7 +26,7 @@ send and track e-mails, headache-free. It just works out of box!
 * Html and Text versions of Emails 
 * All messages are **fully translatable** from Admin Panel (no .po/.mo)
 * Diagnostics Panel to check your blog mailing capability 
-* **Compatible with Postman, WP Mail SMTP, Easy WP SMTP, Easy SMTP Mail, WP Mail Bank**
+* **Compatible with Postman,  WP Mail SMTP, Easy WP SMTP, Easy SMTP Mail, WP Mail Bank**
 
 = Integration with WordPress registration =
 
@@ -76,6 +76,17 @@ Thank you, The Newsletter Team
 3. The Reports extension
 
 == Changelog ==
+
+= 4.8.9 =
+
+* Package problems on WP.org 
+
+= 4.8.8 =
+
+* WP Users Integration and Locked Content Extensions readiness
+* Improved the SSL management on admin side
+* Fix privacy checkbox layout when the link is used
+* Standard form CSS improvements
 
 = 4.8.7 =
 

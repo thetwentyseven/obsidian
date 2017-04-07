@@ -157,7 +157,7 @@ function newsletter_emails_get_theme_options($theme) {
 
                     </td>
                     <td style="text-align: left; vertical-align: top; border-bottom: 1px solid #ddd; padding-bottom: 10px">
-                        <div style="float: right"><?php $controls->button_primary('create', 'Proceed to edit &raquo;', 'this.form.action=\'' . home_url('/') . '?na=emails-create\';this.form.submit()'); ?></div>
+                        <div style="float: right"><?php $controls->button_primary('create', 'Proceed to edit &raquo;', 'this.form.action=\'' . home_url('/', is_ssl()?'https':'http') . '?na=emails-create\';this.form.submit()'); ?></div>
                         <img style="position: relative; left: 5px; top: 10px;"src="<?php echo plugins_url('newsletter') ?>/images/arrow.png" height="35">
                     </td>
                 </tr>
@@ -166,7 +166,7 @@ function newsletter_emails_get_theme_options($theme) {
                         <?php @include $module->get_current_theme_file_path('theme-options.php'); ?>
                     </td>
                     <td style="vertical-align: top; padding-top: 15px; padding-left: 15px">
-                        <iframe src="<?php echo wp_nonce_url(home_url('/') . '?na=emails-preview&ts=' . time(), 'view'); ?>" height="700" style="width: 100%; border: 1px solid #ccc"></iframe>
+                        <iframe src="<?php echo wp_nonce_url(home_url('/', is_ssl()?'https':'http') . '?na=emails-preview&ts=' . time(), 'view'); ?>" height="700" style="width: 100%; border: 1px solid #ccc"></iframe>
                     </td>
                 </tr>
             </table>

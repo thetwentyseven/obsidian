@@ -51,8 +51,11 @@ function newsletter_print_entries($group) {
             <ul>
                 <li><a href="?page=newsletter_subscription_options"><i class="fa fa-sign-in"></i> <?php _e('Subscription', 'newsletter') ?>
                         <small><?php _e('The subscription process in detail', 'newsletter') ?></small></a></li>
+                        
+                <?php if (!file_exists(WP_PLUGIN_DIR . '/newsletter-wpusers')) { ?>        
                 <li><a href="?page=newsletter_wp_index"><i class="fa fa-wordpress"></i> <?php _e('WP Registration', 'newsletter') ?>
                         <small><?php _e('Subscribe on WP registration', 'newsletter') ?></small></a></li>
+                <?php } ?>        
                 <li><a href="?page=newsletter_subscription_profile"><i class="fa fa-check-square-o"></i> <?php _e('Subscription Form Fields, Buttons, Labels', 'newsletter') ?>
                         <small><?php _e('When and what data to collect', 'newsletter') ?></small></a></li>
                 <li><a href="?page=newsletter_subscription_lists"><i class="fa fa-th-list"></i> <?php _e('Lists', 'newsletter') ?>
@@ -152,7 +155,7 @@ function newsletter_print_entries($group) {
     </div>
 <?php } ?>
 
-<?php /*
+<?php 
 $newsletter_lock_options = get_option('newsletter_lock');
 if (isset($_GET['debug']) || !isset($dismissed['newsletter-lock']) && !file_exists(WP_PLUGIN_DIR . '/newsletter-lock') && !empty($newsletter_lock_options['enabled'])) { ?>
     <div class="tnp-notice">
@@ -160,7 +163,7 @@ if (isset($_GET['debug']) || !isset($dismissed['newsletter-lock']) && !file_exis
         The <strong>Locked Content</strong> feature is now managed with a free extension. Please install it from the 
         <a href="?page=newsletter_main_extensions">Extensions panel</a>. Thank you.
     </div>
-<?php } */ ?>
+<?php }  ?>
 
 
 <?php if (isset($_GET['debug']) || !isset($dismissed['newsletter-subscribe']) && get_option('newsletter_install_time') && get_option('newsletter_install_time') < time() - 86400 * 15) { ?>

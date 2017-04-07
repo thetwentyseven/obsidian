@@ -1447,7 +1447,7 @@ class NewsletterSubscription extends NewsletterModule {
             $buffer .= '<div class="tnp-field tnp-field-privacy">';
             $buffer .= '<label><input type="checkbox" name="ny" required class="tnp-privacy">&nbsp;';
             if (!empty($options_profile['privacy_url'])) {
-                $buffer .= '<a target="_blank" href="' . esc_attr($options_profile['privacy_url']) . '"></label>';
+                $buffer .= '<a target="_blank" href="' . esc_attr($options_profile['privacy_url']) . '">';
                 $buffer .= esc_attr($options_profile['privacy']) . '</a>';
             } else {
                 $buffer .= esc_html($options_profile['privacy']);

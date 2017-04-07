@@ -31,13 +31,18 @@ CUSTOM CSS RULES.
     margin: 0;
 }
 
-.tnp-subscription input[type=text], .tnp-subscription input[type=email], .tnp-subscription input[type=submit], .tnp-subscription select {
+.tnp-subscription input[type=text], 
+.tnp-subscription input[type=email], 
+.tnp-subscription input[type=submit], 
+.tnp-subscription select {
     width: 100%;
     padding: 10px;
     display: block;
     border: 1px;
     border-color: #ddd;
     background-color: #f4f4f4;
+    background-image: none;
+    text-shadow: none;
     color: #444;
     font-size: 14px;
     margin: 0;
@@ -45,7 +50,8 @@ CUSTOM CSS RULES.
     box-sizing: border-box;
 }
 
-.tnp-subscription input[type=checkbox], .tnp-widget input[type=radio] {
+.tnp-subscription input[type=checkbox], 
+.tnp-widget input[type=radio] {
     width: auto;
     display: inline;
 }
@@ -87,15 +93,17 @@ tnp-profile form .tnp-field label {
     font-size: 14px;
 }
 
-.tnp-profile form .tnp-field input[type=text],
-.tnp-profile form .tnp-field input[type=email],
-.tnp-profile form .tnp-field input[type=submit],
+.tnp-profile form .tnp-field input[type=text], 
+.tnp-profile form .tnp-field input[type=email], 
+.tnp-profile form .tnp-field input[type=submit], 
 .tnp-profile form .tnp-field select {
     padding: 10px;
     display: block;
     border: 1px;
     border-color: #ddd;
     background-color: #f4f4f4;
+    background-image: none;
+    text-shadow: none;
     color: #444;
     font-size: 14px;
     margin: 0;
@@ -152,6 +160,8 @@ tnp-profile form .tnp-field label {
     border: 1px solid #ddd ;
     border-color: #ddd;
     background-color: #f4f4f4;
+    background-image: none;
+    text-shadow: none;
     color: #444;
     font-size: 14px;
     line-height: normal;
@@ -171,6 +181,8 @@ tnp-profile form .tnp-field label {
 
 .tnp-widget input.tnp-submit {
     background-color: #444;
+    background-image: none;
+    text-shadow: none;
     color: #fff;
 }
 
@@ -179,7 +191,7 @@ tnp-profile form .tnp-field label {
 }
 
 .tnp-field label {
-
+    
 }
 
 /* Newsletter Widget Minimal */
@@ -201,7 +213,7 @@ tnp-profile form .tnp-field label {
     display: inline-block;
     border: 1px;
     border-color: #ddd;
-    background-color: #222222;
+    background-color: #f4f4f4;
     color: #444;
     font-size: 14px;
     box-sizing: border-box;
@@ -213,8 +225,10 @@ tnp-profile form .tnp-field label {
     padding: 10px;
     display: inline-block;
     border: 1px;
-    border-color: #e30613;
-    background-color: #e30613;
+    border-color: #ddd;
+    background-color: #444;
+    background-image: none;
+    text-shadow: none;
     color: #fff;
     font-size: 14px;
     line-height: normal;
@@ -257,6 +271,8 @@ tnp-profile form .tnp-field label {
     border: 1px;
     border-color: #ddd;
     background-color: #444;
+    background-image: none;
+    text-shadow: none;
     color: #fff;
     font-size: 14px;
     box-sizing: border-box;

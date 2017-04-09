@@ -47,7 +47,7 @@ ul {
 }
 
 a {color: #e30613;}
-a:hover {color: #e30613;}
+a:hover {color: #fff;text-decoration: none;}
 a:active {color: #e30613;}
 a:focus {color: #e30613;}
 
@@ -197,9 +197,19 @@ ul#menu-all-pages {
 /*
 * Content
 */
+.obsidian-section {
+    background: rgba(227, 6, 19, 0.19);
+    padding: 4em 0em;
+}
+
+.content-transparent{
+  background: transparent;
+  margin-bottom:4em;
+}
+
 .main-content{
   background-color: rgba(0, 0, 0, 0.90);
-  margin-bottom:0.5em;
+  margin-bottom:4em;
   margin-top: 2.5em;
 }
 
@@ -311,7 +321,6 @@ ul#menu-all-pages {
 .sub-heading {
   font-size:40px;
   padding-bottom:30px;
-  font-weight: bold;
 }
 
 .day{
@@ -324,12 +333,33 @@ ul#menu-all-pages {
   font-size: 28px;
   color:#e30613;
 }
+
+
 /* Residents */
-.img-center {
-    margin: 0 auto;
-    padding-bottom: 15px;
+.dj-profile {
+  margin: 1em 0em;
 }
-.dj {
-  font-size: 28px;
-  color:#e30613;
+
+p.dj-cat, p.dj-tag {
+    float: left;
+    margin-right: 6px;
+}
+
+ul.post-categories li a{
+  padding: 5px;
+  background: #1b1b1b;
+  color: #fff;
+}
+
+ul.post-tags li a{
+  padding: 5px;
+  background: #773525;
+  color: #fff;
+  float: left;
+  margin-right: 2px;
+}
+
+.dj-social{
+  clear: both;
+  margin: 8px 0px;
 }

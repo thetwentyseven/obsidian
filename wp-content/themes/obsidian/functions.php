@@ -51,7 +51,7 @@ function custom_events_post_type(){
 											array(
 												'labels' => array('name' => 'Events'),
 												'public' => true,
-												'menu_position' => 2,
+												'menu_position' => 5,
 												'menu_icon' => 'dashicons-calendar',
 												'has_archive' => true,
 												'supports' => array( 'title', 'editor', 'thumbnail' ),
@@ -61,6 +61,26 @@ function custom_events_post_type(){
 											)
 										);
 }
+
+
+add_action('init', 'custom_djs_post_type');
+
+function custom_djs_post_type(){
+	register_post_type('dj',
+											array(
+												'labels' => array('name' => 'DJs'),
+												'public' => true,
+												'menu_position' => 4,
+												'menu_icon' => 'dashicons-album',
+												'has_archive' => true,
+												'supports' => array( 'title', 'editor', 'thumbnail' ),
+												'can_export' => true,
+												'hierarchical' => true,
+												'taxonomies' => array('category', 'post_tag'),
+											)
+										);
+}
+
 
 function obsidian_theme_customizer( $wp_customize ) {
     // Fun code will go here

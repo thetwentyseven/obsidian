@@ -12,7 +12,7 @@ $args = array(
   'post_type' => 'events',
   'orderby' => 'date',
   'order' => ASC,
-  'posts_per_page' => 6 );
+  'posts_per_page' => 3 );
 
 $loop = new WP_Query( $args );
 ?>
@@ -39,7 +39,7 @@ $loop = new WP_Query( $args );
 // DJs custom type
 $args = array(
   'post_type' => 'dj',
-  'posts_per_page' => 6);
+  'posts_per_page' => 3);
 
 $loop = new WP_Query( $args );
 ?>

@@ -77,6 +77,8 @@ a:focus {color: #e30613;}
 
 /* End General */
 
+
+
 /**
 * Navigation
 */
@@ -209,7 +211,8 @@ ul#menu-all-pages {
 
 .main-content{
   background-color: rgba(0, 0, 0, 0.90);
-  margin-bottom:4em;
+  margin-bottom:2.5em;
+  padding-bottom: 2em;
   margin-top: 2.5em;
 }
 
@@ -243,7 +246,9 @@ ul#menu-all-pages {
   font-size: 24px;
 }
 
-
+.tnp-widget-minimal input.tnp-submit{
+  background: #e30613 !important;
+}
 /* End Footer */
 
 

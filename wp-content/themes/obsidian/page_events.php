@@ -1,26 +1,20 @@
 <?php /* Template Name: Events Template */ ?>
-<?php
-    get_header();
-    // Custom loop
+<?php get_header(); ?>
+<div class="container main-content ">
+    <div class="col-md-8">
+    <?php
     if ( have_posts() ) : while ( have_posts() ) : the_post();
-        $theme = $post->post_title;
-        ?>
-        <div class="container main-content">
-          <div class="page-header" style="padding-left:15px;">
-          		<?php the_title( '<h1 class="blog-post-title" style="color:#e30613;">', '</h1>'); ?>
-          </div>
-         <!-- Example row of columns -->
-			<div class="row">
-				<div class="col-md-9">
-					<?php the_content(); ?>
-				</div>
-				<div class="col-md-3">
-					<div style="margin-top:-20px; color:#e30613;">
-					<?php dynamic_sidebar( 'events_right_1' ); ?>
-					</div>
-				</div>
-			</div>
-		</div>
+    ?>
+      <div class="page-header">
+      		<?php the_title( '<h2 class="blog-post-title">', '</h2>'); ?>
+      </div>
+     <!-- Example row of columns -->
+     <div class="col-md-5">
+       <?php the_post_thumbnail( array( 255, 360 ) );  ?>
+     </div>
+     <div class="col-md-7">
+       <?php the_content(); ?>
+     </div>
 
     <?php
     endwhile;
@@ -28,7 +22,12 @@
         _e( 'Sorry, no posts matched your criteria.', 'obsidian' );
     endif;
     ?>
+    </div>
 
+    <div class="col-md-4">
+      <?php dynamic_sidebar( 'events_right_1' ); ?>
+    </div>
+</div>
     <?php
     switch ($theme) {
       case 'Drum & Bass':

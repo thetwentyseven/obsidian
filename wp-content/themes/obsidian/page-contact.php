@@ -5,14 +5,15 @@
         ?>
         <div class="container main-content">
           <div class="page-header">
-            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
           		<?php the_title( '<h2 class="blog-post-title">', '</h2>'); ?>
-          	</a>
           </div>
          <!-- Example row of columns -->
           <div class="row">
-           <div class="col-md-12">
+           <div class="col-md-8">
              <?php the_content(); ?>
+           </div>
+           <div class="col-md-4">
+             <?php echo do_shortcode("[contact-form-7 id='1899' title='Contact Us']"); ?>
            </div>
          </div>
         </div>

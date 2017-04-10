@@ -11,12 +11,7 @@
           </div>
          <!-- Example row of columns -->
 			<div class="row">
-				<div class="col-md-3">
-					<div style="padding-left:15px; padding-bottom:20px;">
-					<?php the_post_thumbnail( array( 255, 360 ) );  ?>
-					</div>
-				</div>
-				<div class="col-md-6">
+				<div class="col-md-9">
 					<?php the_content(); ?>
 				</div>
 				<div class="col-md-3">

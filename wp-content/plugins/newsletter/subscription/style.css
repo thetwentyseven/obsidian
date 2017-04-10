@@ -31,9 +31,9 @@ CUSTOM CSS RULES.
     margin: 0;
 }
 
-.tnp-subscription input[type=text], 
-.tnp-subscription input[type=email], 
-.tnp-subscription input[type=submit], 
+.tnp-subscription input[type=text],
+.tnp-subscription input[type=email],
+.tnp-subscription input[type=submit],
 .tnp-subscription select {
     width: 100%;
     padding: 10px;
@@ -50,7 +50,7 @@ CUSTOM CSS RULES.
     box-sizing: border-box;
 }
 
-.tnp-subscription input[type=checkbox], 
+.tnp-subscription input[type=checkbox],
 .tnp-widget input[type=radio] {
     width: auto;
     display: inline;
@@ -93,9 +93,9 @@ tnp-profile form .tnp-field label {
     font-size: 14px;
 }
 
-.tnp-profile form .tnp-field input[type=text], 
-.tnp-profile form .tnp-field input[type=email], 
-.tnp-profile form .tnp-field input[type=submit], 
+.tnp-profile form .tnp-field input[type=text],
+.tnp-profile form .tnp-field input[type=email],
+.tnp-profile form .tnp-field input[type=submit],
 .tnp-profile form .tnp-field select {
     padding: 10px;
     display: block;
@@ -191,7 +191,7 @@ tnp-profile form .tnp-field label {
 }
 
 .tnp-field label {
-    
+
 }
 
 /* Newsletter Widget Minimal */
@@ -217,6 +217,7 @@ tnp-profile form .tnp-field label {
     color: #444;
     font-size: 14px;
     box-sizing: border-box;
+    border-radius: 0px;
 }
 
 .tnp-widget-minimal input.tnp-submit {
@@ -226,7 +227,7 @@ tnp-profile form .tnp-field label {
     display: inline-block;
     border: 1px;
     border-color: #ddd;
-    background-color: #444;
+    background-color: #e30c13;
     background-image: none;
     text-shadow: none;
     color: #fff;

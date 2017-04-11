@@ -368,3 +368,12 @@ ul.post-tags li a{
   clear: both;
   margin: 8px 0px;
 }
+
+/* Single DJ */
+.single-dj-image {
+    padding: 4em 2em;
+}
+
+.archive-dj-image {
+    padding: 2em 0em;
+}

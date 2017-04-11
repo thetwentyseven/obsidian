@@ -51,11 +51,13 @@ $loop = new WP_Query( $args );
     </div>
     <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
     <div class="col-sm-4 dj-profile">
+      <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
       <div class="col-sm-12 dj-image">
         <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-square img-responsive', 'title' => 'Feature image']); ?>
       </div>
       <div class="col-sm-12 dj-content">
         <h3 class="dj-title"><?php the_title(); ?></h3>
+        </a>
         <p class="dj-cat">Music: <?php the_category(); ?></p>
         <p class="dj-tag">Obsidian: <?php the_tags( '<ul class="post-tags"><li>', '</li><li>', '</li></ul>' ); ?></p>
         <p class="dj-social">

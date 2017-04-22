@@ -4,15 +4,18 @@
     if ( have_posts() ) : while ( have_posts() ) : the_post();
         ?>
         <div class="container main-content">
-          <div class="page-header">
-          		<?php the_title( '<h2 class="blog-post-title">', '</h2>'); ?>
+          <div class="row">
+            <div class="page-header">
+            		<?php the_title( '<h1 class="blog-post-title">', '</h1>'); ?>
+            </div>
           </div>
-         <!-- Example row of columns -->
+
           <div class="row">
            <div class="col-md-12">
              <?php the_content(); ?>
            </div>
          </div>
+
         </div>
         <?php
     endwhile;
@@ -21,4 +24,5 @@
     endif;
     //get_sidebar();
     get_footer();
+?>
 ?>

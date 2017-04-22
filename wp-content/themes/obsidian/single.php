@@ -1,28 +1,32 @@
 <?php get_header(); ?>
+
 <div class="container main-content ">
-  <div class="col-md-8">
 
-  <?php
-  if ( have_posts() ) : while ( have_posts() ) : the_post();
-  ?>
+    <?php
+    if ( have_posts() ) : while ( have_posts() ) : the_post();
+    ?>
     <div class="page-header">
-    		<?php the_title( '<h2 class="blog-post-title">', '</h2>'); ?>
+        <?php the_title( '<h1 class="blog-post-title">', '</h1>'); ?>
     </div>
-   <!-- Example row of columns -->
-   <div class="content">
-     <?php the_content(); ?>
-   </div>
 
-  <?php
-  endwhile;
-  else :
-      _e( 'Sorry, no posts matched your criteria.', 'obsidian' );
-  endif;
-  ?>
-  </div>
+    <div class="col-md-8">
+     <!-- Example row of columns -->
+     <div class="content">
+       <?php the_content(); ?>
+       <br>
+       <p class="blog-post-meta"><?php the_date('F j, Y'); ?> by <a href="#"><?php the_author(); ?></a></p>
+     </div>
+    </div>
+    <?php
+    endwhile;
+    else :
+        _e( 'Sorry, no posts matched your criteria.', 'obsidian' );
+    endif;
+    ?>
 
-  <div class="col-md-4">
-    <?php dynamic_sidebar( 'blog_right_1' ); ?>
+
+  <div class="col-md-4 sidebar">
+    <?php dynamic_sidebar( 'events_right_1' ); ?>
   </div>
 
 </div>

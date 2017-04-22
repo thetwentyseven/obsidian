@@ -176,7 +176,7 @@ button.navbar-toggle {
     font-size: 14px;
     text-align: left;
     list-style: none;
-    background-color: rgba(117, 115, 115, 0.84);
+        background: rgba(0, 0, 0, 0.90);
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border: 1px solid #ccc;
@@ -234,6 +234,10 @@ ul#menu-all-pages {
   border-radius: 0px;
 }
 
+.container.marketing {
+    margin-bottom: 2em;
+}
+
 /* End Content */
 
 
@@ -262,6 +266,11 @@ ul#menu-all-pages {
 
 .tnp-widget-minimal input.tnp-submit{
   background: #e30613 !important;
+}
+
+/* Copyright */
+.copyright{
+  margin: 10px auto;
 }
 /* End Footer */
 
@@ -304,6 +313,26 @@ ul#menu-all-pages {
     border-radius: 0px;
 }
 /* End Custom Buttons */
+
+/* Jumbotron */
+.jumbotron{
+  border-radius: 0px!important;
+  box-shadow: 15px 15px 3px rgba(0,0,0,0.4);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background: rgba(0, 0, 0, 0.19);
+  position: relative;
+  height: 100%;
+}
+
+.jumbotron .btn{
+    border-radius:0px!important;
+    box-shadow:1px 1px 4px rgba(0,0,0,0.4);
+    padding:10px 40px;
+}
+
+
 
 
 /* MARKETING CONTENT */
@@ -370,7 +399,7 @@ h3.event-title {
 
 /* Residents */
 .dj-profile {
-  margin: 1em 0em;
+
 }
 
 p.dj-cat, p.dj-tag {

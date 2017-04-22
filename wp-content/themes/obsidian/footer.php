@@ -35,11 +35,12 @@
         <p>Thursday: __8:00PM - 3:00AM</p>
         <p>Friday: ____6:00PM - 3:00AM</p>
         <p>Saturday: __6:00PM - 3:00AM</p>
-        <p>Curabitur condimentum nunc scelerisque diam volutpat, in lacinia neque semper.</p>
+        <p>The club is available for hire Sunday to Wednesday. Potential events include corporate parties &
+          drink receptions, conferences & presentations, fashion shows, formal dinners and award ceremonies.</p>
       </div>
       <div class="col-md-3">
         <h3>TWITTER FEED</h3>
-        <div id="twitter-fetcher"></div> 
+        <div id="twitter-fetcher"></div>
       </div>
       <div class="col-md-3">
         <h3>NEWSLETTERS</h3>
@@ -52,15 +53,10 @@
 <footer class="second-footer">
   <div class="container second-footer-container">
     <div class="navbar-left">
-      <p class="text-muted">Copyright &#169; 2017 Obsidian. All Right Reserved.</p>
+      <p class="text-muted copyright">Copyright &#169; 2017 Obsidian. All Right Reserved.</p>
     </div>
     <div class="nav-pills navbar-right nav-social">
-      <ul class="inline">
-        <li><a href="https://www.facebook.com/mediaobsidian/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-        <li><a href="https://twitter.com/MediaObsidian" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-      </ul>
+      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Credit Card Badges">
     </div>
   </div>
 </footer>

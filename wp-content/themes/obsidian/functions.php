@@ -5,12 +5,16 @@ function bootstrapstarter_enqueue_styles() {
     wp_enqueue_style( 'obsidian-animate', get_template_directory_uri() . '/animate/animate.css' );
     wp_enqueue_style( 'obsidian-style', get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'obsidian-shop-style', get_template_directory_uri() . '/css/shop.css' );
+    wp_enqueue_style( 'obsidian-owlcarousel-style', get_template_directory_uri() . '/owlcarousel/dist/assets/owl.carousel.min.css' );
+    wp_enqueue_style( 'obsidian-owlcarousel-theme', get_template_directory_uri() . '/owlcarousel/dist/assets/owl.theme.default.min.css' );
 }
 
 function bootstrapstarter_enqueue_scripts() {
     wp_enqueue_script('obsidian-bootstrap-js', get_template_directory_uri().'/bootstrap/js/bootstrap.min.js', '3.3.6', false );
     wp_enqueue_script('obsidian-animate-js', get_template_directory_uri().'/animate/animate.js', '1.0.0', false );
     wp_enqueue_script( 'twitterFetcher', get_template_directory_uri() . '/js/twitterFetcher.js', array(), '6.0.3', true );
+    wp_enqueue_script( 'obsidian-owlcarousel-custom-js', get_template_directory_uri() . '/js/owlObsidian.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'obsidian-owlcarousel-js', get_template_directory_uri() . '/owlcarousel/dist/owl.carousel.min.js', array(), '2.2.1', true );
 }
 
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles' );

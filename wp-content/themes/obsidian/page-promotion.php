@@ -4,20 +4,24 @@
     if ( have_posts() ) : while ( have_posts() ) : the_post();
         ?>
         <div class="container main-content">
-          <div class="page-header">            
-          		<?php the_title( '<h2 class="blog-post-title">', '</h2>'); ?>          	
-          </div>
-         <!-- Example row of columns -->
           <div class="row">
-           <div class="col-md-4">
-				<div style="padding-bottom:20px;">
-					<a href="wp-content/themes/obsidian/pdf/drink_menu.pdf" target="_blank"><?php the_post_thumbnail( array( 350, 600 ) );  ?></a>
-				</div>
-           </div>
-		   <div class="col-md-8">             
-             <?php the_content(); ?>
-           </div>
-         </div>
+            <div class="page-header">
+            		<?php the_title( '<h1 class="blog-post-title">', '</h1>'); ?>
+            </div>
+          </div>
+          <!-- Example row of columns -->
+          <div class="row">
+             <div class="col-md-4">
+        				<div style="padding-bottom:20px;">
+        					<a href="wp-content/themes/obsidian/pdf/drink_menu.pdf" target="_blank">
+                    <?php the_post_thumbnail( array( 350, 600 ) );  ?>
+                  </a>
+        				</div>
+             </div>
+      		   <div class="col-md-8">
+               <?php the_content(); ?>
+             </div>
+          </div>
         </div>
         <?php
     endwhile;

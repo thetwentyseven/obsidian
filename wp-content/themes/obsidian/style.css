@@ -26,7 +26,7 @@ Official Obsidian Colour: #e30613
 
 html, body {
     font-family: proximaNova;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.42857143;
     color: #fff;
     font-smoothing: none;
@@ -213,6 +213,14 @@ ul#menu-all-pages {
 /*
 * Content
 */
+
+.page-header {
+  box-shadow: 15px 15px 3px rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.19);
+  padding: 1em;
+  border: none;
+}
+
 .obsidian-section {
     background: rgba(227, 6, 19, 0.19);
     padding: 4em 0em;
@@ -224,7 +232,7 @@ ul#menu-all-pages {
 }
 
 .main-content{
-  background-color: rgba(0, 0, 0, 0.90);
+  background-color: transparent;
   margin-bottom:2.5em;
   padding-bottom: 2em;
   margin-top: 2.5em;

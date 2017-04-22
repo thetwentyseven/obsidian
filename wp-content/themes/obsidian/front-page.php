@@ -25,10 +25,11 @@ $loop = new WP_Query( $args );
   </div>
   <div class="row">
     <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-    <div class="col-lg-4">
-      <h3><b><?php the_title(); ?></b></h3>
-      <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-thumbnail', 'title' => 'Feature image']); ?>
-      <a class="btn btn-hero" role="button" href="<?php the_permalink(); ?> ">View details &raquo;</a>
+    <div class="col-lg-4 event-hover">
+      <a class="event-link" href="<?php the_permalink(); ?> ">
+        <h3 class="event-title"><b><?php the_title(); ?></b></h3>
+        <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-thumbnail', 'title' => 'Feature image']); ?>
+      </a>
     </div><!-- /.col-lg-4 -->
     <?php endwhile; ?>
   </div><!-- /.row -->

@@ -17,6 +17,10 @@ input, select, textarea{
     box-shadow: inset 0 1px 1px rgba(0,0,0,.125);
 }
 
+label.screen-reader-text {
+    display: none;
+}
+
 .container-shop{
   margin-top: 1em;
   margin-bottom: 1em;

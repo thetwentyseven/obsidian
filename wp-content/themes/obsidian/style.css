@@ -219,6 +219,7 @@ ul#menu-all-pages {
   background: rgba(0, 0, 0, 0.19);
   padding: 1em;
   border: none;
+  margin-bottom: 2em;
 }
 
 .obsidian-section {
@@ -235,7 +236,7 @@ ul#menu-all-pages {
   background-color: transparent;
   margin-bottom:2.5em;
   padding-bottom: 2em;
-  margin-top: 2.5em;
+  margin-top: 0.5em;
 }
 
 .img-thumbnail {
@@ -436,7 +437,7 @@ ul.post-tags li a{
 
 /* Single DJ */
 .single-dj-image {
-    padding: 4em 2em;
+    
 }
 
 .archive-dj-image {

@@ -13,8 +13,6 @@
      <!-- Example row of columns -->
      <div class="content">
        <?php the_content(); ?>
-       <br>
-       <p class="blog-post-meta"><?php the_date('F j, Y'); ?> by <a href="#"><?php the_author(); ?></a></p>
      </div>
     </div>
     <?php
@@ -26,7 +24,7 @@
 
 
   <div class="col-md-4 sidebar">
-    <?php dynamic_sidebar( 'blog_right_1' ); ?>
+    <?php dynamic_sidebar( 'events_right_1' ); ?>
   </div>
 
 </div>

@@ -31,58 +31,42 @@
 </div>
 
 
+<?php
+$args = array(
+  'post_type' => 'dj',
+  'posts_per_page' => 6 );
 
+$loop = new WP_Query( $args );
+?>
 
-
-    <?php
-    switch ($theme) {
-      case 'Drum & Bass':
-        $theme = 'DRUM&BASS';
-        break;
-      case 'EDM':
-        break;
-      case 'POP':
-        break;
-      default:
-        $theme = 'DRUM&BASS';
-    }
-
-    $args = array(
-      'post_type' => 'dj',
-      'category_name' => $theme,
-      'posts_per_page' => 6 );
-
-    $loop = new WP_Query( $args );
-    ?>
-
-    <div class="obsidian-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-              <h2 class="sub-heading"><b>OUR RESIDENT DJS</b></h2>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="owl-carousel-dj owl-carousel owl-theme">
-            <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-            <div class="item dj-profile">
-              <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-              <div class="dj-image">
-                <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-square img-responsive']); ?>
-              </div>
-              <div class="dj-content">
-                <h3 class="dj-title"><?php the_title(); ?></h3>
-                </a>
-                <p class="dj-cat"><?php the_category(); ?></p>
-              </div>
-            </div>
-            <?php endwhile; ?>
-          </div>
-        </div>
+<div class="obsidian-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+          <h2 class="sub-heading"><b>OUR RESIDENT DJS</b></h2>
       </div>
     </div>
 
-    <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+    <div class="row">
+      <div class="owl-carousel-dj owl-carousel owl-theme">
+        <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+        <div class="item dj-profile">
+          <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+          <div class="dj-image">
+            <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-square img-responsive']); ?>
+          </div>
+          <div class="dj-content">
+            <h3 class="dj-title"><?php the_title(); ?></h3>
+            </a>
+            <p class="dj-cat"><?php the_category(); ?></p>
+          </div>
+        </div>
+        <?php endwhile; ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
 
 <?php get_footer(); ?>

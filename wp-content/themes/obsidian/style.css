@@ -279,7 +279,14 @@ ul#menu-all-pages {
 }
 
 .tnp-widget-minimal input.tnp-submit{
-  background: #e30613 !important;
+  background: #e30613;
+}
+
+.tnp-widget-minimal input.tnp-submit:hover{
+  background: #dad8da;
+  text-decoration: none;
+  background-image: none;
+  color: #515151;
 }
 
 /* Copyright */

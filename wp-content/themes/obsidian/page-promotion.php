@@ -13,7 +13,7 @@
           <div class="row">
              <div class="col-md-4">
         				<div style="padding-bottom:20px;">
-        					<a href="wp-content/themes/obsidian/pdf/drink_menu.pdf" target="_blank">
+        					<a href="/wp-content/themes/obsidian/pdf/drink_menu.pdf" target="_blank">
                     <?php the_post_thumbnail( array( 350, 600 ) );  ?>
                   </a>
         				</div>

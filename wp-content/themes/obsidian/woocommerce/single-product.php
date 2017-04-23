@@ -24,6 +24,11 @@ get_header( 'shop' ); ?>
 
 <div class="container container-shop">
 	<div class="row">
+		<div class="page-header">
+				<h1 class="blog-post-title">Shop</h1>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-8">
 	<?php
 		/**

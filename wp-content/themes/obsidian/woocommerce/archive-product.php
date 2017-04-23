@@ -24,6 +24,11 @@ get_header(); ?>
 
 	<div class="container container-shop">
 		<div class="row">
+      <div class="page-header">
+      		<h1 class="blog-post-title">Shop</h1>
+      </div>
+    </div>
+		<div class="row">
 			<div class="col-md-8">
 				<?php
 					/**
@@ -35,11 +40,6 @@ get_header(); ?>
 					do_action( 'woocommerce_before_main_content' );
 				?>
 
-					<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-
-						<h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
-
-					<?php endif; ?>
 
 					<?php
 						/**

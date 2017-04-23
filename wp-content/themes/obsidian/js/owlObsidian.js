@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
 
     $('.owl-carousel-dj').owlCarousel({
       loop:false,
-      margin:10,
+      margin:50,
       nav:false,
       responsive:{
           0:{

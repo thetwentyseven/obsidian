@@ -16,9 +16,9 @@
       </div>
       <div class="col-md-6">
        <div class="content">
-         <?php the_content(); ?>
-         <p class="dj-cat">Music: <?php the_category(); ?></p>
-         <p class="dj-tag">Obsidian: <?php the_tags( '<ul class="post-tags"><li>', '</li><li>', '</li></ul>' ); ?></p>
+         <p class="dj-cat"><?php the_category(); ?></p>
+         <p class="dj-tag"><?php the_tags( '<ul class="post-tags"><li>', '</li><li>', '</li></ul>' ); ?></p>
+         <p class="dj-content"><?php the_content(); ?></p>
          <p class="dj-social">
            <a href="https://www.facebook.com/mediaobsidian/" target="_blank">Facebook</a>
            /

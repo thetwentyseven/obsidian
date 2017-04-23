@@ -30,6 +30,7 @@ html, body {
     line-height: 1.42857143;
     color: #fff;
     font-smoothing: none;
+    transition:all 0.3s ease;
 }
 
 body{
@@ -47,9 +48,9 @@ ul {
 }
 
 a {color: #e30613;}
-a:hover {color: #fff;text-decoration: none;}
-a:active {color: #e30613;}
-a:focus {color: #e30613;}
+a:hover {color: #FF5722;text-decoration: none;}
+a:active {color: #FF5722;}
+a:focus {color: #FF5722;}
 
 .inline {
     margin-top: 0;
@@ -72,7 +73,10 @@ a:focus {color: #e30613;}
   line-height: 35px;
   color: #e30613;
   text-align: center;
+}
 
+.fa:hover {
+    box-shadow: inset 0 0 0 2px rgb(249, 248, 248);
 }
 
 /* End General */
@@ -263,6 +267,7 @@ ul#menu-all-pages {
   padding: 1em;
   color: #fff;
   background: #000;
+  box-shadow: 0px 0px 90px rgb(227, 6, 19);
 }
 
 .footer-info-table tr td{
@@ -345,6 +350,10 @@ ul#menu-all-pages {
 
 
 /* MARKETING CONTENT */
+.carousel-event{
+  width: 70%;
+  margin: 0 auto;
+}
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
@@ -361,7 +370,6 @@ ul#menu-all-pages {
 
 
 /* Featurettes */
-
 .featurette-divider {
   margin: 60px 0; /* Space out the Bootstrap <hr> more */
   margin-bottom: 30px;
@@ -408,11 +416,20 @@ h3.event-title {
 
 /* Residents */
 .dj-profile {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+}
 
+.dj-profile:hover{
+  box-shadow: inset 0 0 0 20px rgb(27, 27, 27);
+}
+
+.dj-profile:hover > .dj-content > a{
+  color: #fff;
 }
 
 p.dj-cat, p.dj-tag {
-    float: left;
     margin-right: 6px;
 }
 
@@ -424,7 +441,7 @@ ul.post-categories li a{
 
 ul.post-tags li a{
   padding: 5px;
-  background: #773525;
+  background: rgba(227, 6, 19, 0.43);
   color: #fff;
   float: left;
   margin-right: 2px;
@@ -435,9 +452,13 @@ ul.post-tags li a{
   margin: 8px 0px;
 }
 
+p.dj-content {
+    clear: both;
+}
+
 /* Single DJ */
 .single-dj-image {
-    
+  padding: 1em;
 }
 
 .archive-dj-image {

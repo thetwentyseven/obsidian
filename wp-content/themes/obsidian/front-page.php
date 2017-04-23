@@ -47,7 +47,7 @@ $loop = new WP_Query( $args );
   <div class="row">
     <div class="owl-carousel owl-theme">
       <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-      <div class="item">
+      <div class="item carousel-event">
         <a class="event-link" href="<?php the_permalink(); ?> ">
           <h3 class="event-title"><b><?php the_title(); ?></b></h3>
           <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-thumbnail']); ?>
@@ -88,16 +88,7 @@ $loop = new WP_Query( $args );
           <div class="dj-content">
             <h3 class="dj-title"><?php the_title(); ?></h3>
             </a>
-            <p class="dj-cat">Music: <?php the_category(); ?></p>
-            <p class="dj-tag">Obsidian: <?php the_tags( '<ul class="post-tags"><li>', '</li><li>', '</li></ul>' ); ?></p>
-            <p class="dj-social">
-              <a href="https://www.facebook.com/mediaobsidian/" target="_blank">Facebook</a>
-              /
-              <a href="https://twitter.com/MediaObsidian" target="_blank">Twitter</a>
-            </p>
-          </div>
-          <div class="dj-quote">
-            <p><?php the_content(); ?></p>
+            <p class="dj-cat"><?php the_category(); ?></p>
           </div>
         </div>
         <?php endwhile; ?>

@@ -21,7 +21,7 @@
           <p>The Obsidian team promises a tailored event experience, executed to your specifications.
             The club is available for hire Sunday to Wednesday. Potential events include corporate parties &
             drink receptions, conferences & presentations, fashion shows, formal dinners and award ceremonies.</p>
-          <p><a class="button btn-lg">Learn more</a></p>
+          <p><a class="button btn-lg" href="<?php echo get_page_link(1781); ?>">Learn more</a></p>
         </div>
 	</div>
 </div>

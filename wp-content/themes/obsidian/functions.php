@@ -169,5 +169,20 @@ function obsidian_blog_widgets_init() {
 add_action( 'widgets_init', 'obsidian_blog_widgets_init' );
 
 
+function obsidian_dj_widgets_init() {
+
+	register_sidebar( array(
+		'name'          => 'Dj right sidebar',
+		'id'            => 'dj_right_1',
+    'before_widget' => '<div>',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h2 class="rounded">',
+    'after_title'   => '</h2>',
+  ) );
+
+}
+add_action( 'widgets_init', 'obsidian_dj_widgets_init' );
+
+
 /* Disable breadcrumbs in WooCommerce */
 remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
